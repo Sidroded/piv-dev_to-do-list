@@ -7,29 +7,30 @@
     tools:context=".RegisterLayout">
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_above="@id/editTextTextPassword"
         android:layout_centerHorizontal="true"
-        />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@string/email_field_reg" />
+
+    <EditText
         android:id="@+id/editTextTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_centerInParent="true"
-        />
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="@string/password_field_reg" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_below="@id/editTextTextPassword"
         android:layout_centerHorizontal="true"
-        android:onClick="checkRegister"
-        />
+        android:contentDescription="@string/registration_button"
+        android:onClick="checkRegister" />
 </RelativeLayout>
