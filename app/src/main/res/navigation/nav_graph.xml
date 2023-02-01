@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/calendar">
+
+    <fragment
+        android:id="@+id/calendar"
+        android:name="com.sidroded.todolist.mainfragment"
+        android:label="fragment_mainfragment"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_mainfragment_to_friends"
+            app:destination="@id/friends" />
+        <action
+            android:id="@+id/action_mainfragment_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/friends"
+        android:name="com.sidroded.todolist.friends"
+        android:label="fragment_friends"
+        tools:layout="@layout/fragment_friends" >
+        <action
+            android:id="@+id/action_friends_to_settings"
+            app:destination="@id/settings" />
+        <action
+            android:id="@+id/action_friends_to_mainfragment"
+            app:destination="@id/calendar" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.sidroded.todolist.settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settings_to_friends"
+            app:destination="@id/friends" />
+        <action
+            android:id="@+id/action_settings_to_mainfragment"
+            app:destination="@id/calendar" />
+    </fragment>
+</navigation>

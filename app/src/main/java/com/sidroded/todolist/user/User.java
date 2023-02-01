@@ -1,12 +1,11 @@
 package com.sidroded.todolist.user;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class User implements IUser {
     String email;
     String password;
-    FirebaseAuth user;
+    FirebaseUser user;
 
     public User(String email, String password, FirebaseUser user) {
         this.email = email;
@@ -25,7 +24,7 @@ public class User implements IUser {
     }
 
     @Override
-    public FirebaseAuth getUser() {
+    public FirebaseUser getUser() {
         return user;
     }
 
