@@ -1,4 +1,4 @@
-package com.sidroded.todolist;
+package com.sidroded.todolist.auth.login;
 
 
 import android.content.Intent;
@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.sidroded.todolist.MainActivity;
+import com.sidroded.todolist.R;
+import com.sidroded.todolist.auth.register.RegisterLayout;
 
 
 public class LoginLayout extends AppCompatActivity {
