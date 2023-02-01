@@ -43,10 +43,11 @@ public class RegisterLayout extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+
                                         Intent intent = new Intent(RegisterLayout.this, MainActivity.class);
                                         startActivity(intent);
                                     } else {
-                                        Toast.makeText(RegisterLayout.this, "Something wrong", Toast.LENGTH_SHORT);
+                                        Toast.makeText(RegisterLayout.this, "Something wrong", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
