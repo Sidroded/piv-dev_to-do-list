@@ -6,4 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".LoginLayout">
 
+    <EditText
+        android:id="@+id/editTextTextEmailAddressLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@id/editTextTextPasswordLogin"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email_field_reg" />
+
+    <EditText
+        android:id="@+id/editTextTextPasswordLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/password_field_reg"/>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/editTextTextPasswordLogin"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/registration_button"
+        android:text="@string/login_button"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textRegister"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/login_btn"
+        android:text="@string/registration_text"
+        />
+
 </RelativeLayout>

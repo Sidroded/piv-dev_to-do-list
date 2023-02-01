@@ -32,6 +32,6 @@
         android:layout_below="@id/editTextTextPassword"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/registration_button"
-        android:onClick="checkRegister"
+        android:text="@string/registration_button"
         />
 </RelativeLayout>

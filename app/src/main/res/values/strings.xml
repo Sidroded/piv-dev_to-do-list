@@ -2,5 +2,8 @@
     <string name="app_name">To Do List</string>
     <string name="email_field_reg">Email</string>
     <string name="password_field_reg">Password</string>
-    <string name="registration_button">Registration Button</string>
+    <string name="registration_button">Зареєструватись</string>
+    <string name="login_button">Увійти</string>
+    <string name="registration_text">Я новий користувач</string>
+
 </resources>

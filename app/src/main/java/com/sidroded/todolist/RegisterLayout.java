@@ -37,8 +37,10 @@ public class RegisterLayout extends AppCompatActivity {
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (email_register.getText().toString().isEmpty() || password_register.getText().toString().isEmpty()||password_register.getText().length()>=6) {
-                    Toast.makeText(RegisterLayout.this, "Fields cannot by empty", Toast.LENGTH_SHORT).show();
+                if (email_register.getText().toString().isEmpty() || password_register.getText().toString().isEmpty()) {
+                    Toast.makeText(RegisterLayout.this, "Заповніть всі поля", Toast.LENGTH_SHORT).show();
+                } else if (password_register.getText().toString().length() < 6) {
+                    Toast.makeText(RegisterLayout.this, "Пароль має бути більше 6 символів", Toast.LENGTH_SHORT).show();
                 } else {
                     mAuth.createUserWithEmailAndPassword(email_register.getText().toString(), password_register.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -50,7 +52,7 @@ public class RegisterLayout extends AppCompatActivity {
                                         startActivity(intent);
                                     } else {
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(RegisterLayout.this, "Something wrong", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterLayout.this, "Ой, щось не так", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
