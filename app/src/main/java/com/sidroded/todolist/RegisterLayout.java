@@ -37,7 +37,7 @@ public class RegisterLayout extends AppCompatActivity {
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (email_register.getText().toString().isEmpty() || password_register.getText().toString().isEmpty()) {
+                if (email_register.getText().toString().isEmpty() || password_register.getText().toString().isEmpty()||password_register.getText().length()>=6) {
                     Toast.makeText(RegisterLayout.this, "Fields cannot by empty", Toast.LENGTH_SHORT).show();
                 } else {
                     mAuth.createUserWithEmailAndPassword(email_register.getText().toString(), password_register.getText().toString())
