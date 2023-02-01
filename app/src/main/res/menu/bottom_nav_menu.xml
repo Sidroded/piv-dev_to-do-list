@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/calendar_item"
+        android:title="Головна" />
+
+    <item android:id="@+id/friends_item"
+        android:title="Учасники" />
+
+    <item android:id="@+id/settings_item"
+        android:title="Налаштування" />
+</menu>

@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
 private FirebaseAuth mAuth;
 User user;
 BottomNavigationView bottomNavigationView;
-CalendarFragment calendarFragment =new CalendarFragment();
-SettingsFragment settingFragment= new SettingsFragment();
-FriendsFragment friendsFragment= new FriendsFragment();
+CalendarFragment calendarFragment = new CalendarFragment();
+SettingsFragment settingFragment = new SettingsFragment();
+FriendsFragment friendsFragment = new FriendsFragment();
 
 
     @Override
@@ -35,19 +35,20 @@ FriendsFragment friendsFragment= new FriendsFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.calendar,calendarFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
-                case R.id.calendar:
+                case R.id.calendar_item:
                     getSupportFragmentManager().beginTransaction().replace(R.id.calendar,calendarFragment).commit();
                     return true;
-                case R.id.friends:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.friends,friendsFragment).commit();
+                case R.id.friends_item:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.calendar,friendsFragment).commit();
                     return true;
-                case R.id.settings:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.settings,settingFragment).commit();
+                case R.id.settings_item:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.calendar,settingFragment).commit();
                     return true;
 
             }
             return false;
         });
+
         mAuth = FirebaseAuth.getInstance();
 
     }
