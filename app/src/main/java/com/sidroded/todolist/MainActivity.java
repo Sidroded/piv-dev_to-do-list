@@ -26,7 +26,7 @@ CalendarFragment calendarFragment =new CalendarFragment();
 SettingsFragment settingFragment= new SettingsFragment();
 FriendsFragment friendsFragment= new FriendsFragment();
 
-    @SuppressLint("NonConstantResourceId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
