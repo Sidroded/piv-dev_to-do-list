@@ -30,6 +30,7 @@
         android:clickable="true"
         android:backgroundTint="@color/items_color"
         app:srcCompat="@drawable/ic_floating_button_add"
+
         />
 
 </RelativeLayout>
