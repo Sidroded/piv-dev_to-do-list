@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,19 +38,21 @@ FriendsFragment friendsFragment = new FriendsFragment();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentContainerView);
+        NavController navCo = navHostFragment.getNavController();
         bottomNavigationView =findViewById(R.id.bottomNavigationView);
-        getSupportFragmentManager().beginTransaction().replace(R.id.calendar,calendarFragment).commit();
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.calendar_item:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.calendar,calendarFragment).commit();
+                    navCo.navigate(R.id.calendar);
                     return true;
                 case R.id.friends_item:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.calendar,friendsFragment).commit();
+                    navCo.navigate(R.id.friends);
                     return true;
                 case R.id.settings_item:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.calendar,settingFragment).commit();
+                   navCo.navigate(R.id.settings);
 
                     return true;
 
