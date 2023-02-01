@@ -12,13 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.sidroded.todolist.auth.login.LoginLayout;
 import com.sidroded.todolist.user.User;
-
-public class MainActivity extends AppCompatActivity {
+import com.sidroded.todolist.FriendsFragment;
+public class MainActivity extends AppCompatActivity{
 private FirebaseAuth mAuth;
 User user;
 BottomNavigationView bottomNavigationView;
@@ -27,10 +28,15 @@ SettingsFragment settingFragment = new SettingsFragment();
 FriendsFragment friendsFragment = new FriendsFragment();
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         bottomNavigationView =findViewById(R.id.bottomNavigationView);
         getSupportFragmentManager().beginTransaction().replace(R.id.calendar,calendarFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -43,6 +49,7 @@ FriendsFragment friendsFragment = new FriendsFragment();
                     return true;
                 case R.id.settings_item:
                     getSupportFragmentManager().beginTransaction().replace(R.id.calendar,settingFragment).commit();
+
                     return true;
 
             }
