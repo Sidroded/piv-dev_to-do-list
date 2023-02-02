@@ -39,7 +39,7 @@ FriendsFragment friendsFragment = new FriendsFragment();
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentContainerView);
         NavController navCo = navHostFragment.getNavController();
-        bottomNavigationView =findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){

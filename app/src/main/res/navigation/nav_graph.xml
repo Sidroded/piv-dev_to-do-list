@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainfragment_to_settings"
             app:destination="@id/settings" />
+        <action
+            android:id="@+id/action_calendar_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/friends"
@@ -41,4 +44,9 @@
             android:id="@+id/action_settings_to_mainfragment"
             app:destination="@id/calendar" />
     </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.sidroded.todolist.note.addnote.AddNoteFragment"
+        android:label="fragment_add_note"
+        tools:layout="@layout/fragment_add_note" />
 </navigation>
