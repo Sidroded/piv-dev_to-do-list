@@ -19,25 +19,28 @@
         android:text="@string/settings_edit_email_text"
         android:textSize="16dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/color_accent"
         />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:id="@+id/edit_text_view_edit_email"
         android:layout_below="@+id/text_view_edit_email"
         android:hint="@string/settings_edit_email_edit_text"
         android:textSize="16dp"
         android:layout_marginBottom="8dp"
+        android:inputType="textEmailAddress"
         />
     
     <Button
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:id="@+id/button_save_edit_email"
         android:layout_below="@+id/edit_text_view_edit_email"
         android:background="@color/items_color"
         android:text="@string/settings_save_email_button_txt"
+        android:textColor="@color/color_accent"
         android:layout_marginBottom="16dp"
         />
 
@@ -49,26 +52,29 @@
         android:textSize="16dp"
         android:layout_marginBottom="8dp"
         android:layout_below="@id/button_save_edit_email"
+        android:textColor="@color/color_accent"
         />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:id="@+id/edit_text_view_edit_password"
         android:layout_below="@+id/text_view_edit_password"
         android:hint="@string/settings_edit_password_edit_text"
         android:textSize="16dp"
         android:layout_marginBottom="8dp"
+        android:inputType="textPassword"
         />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:id="@+id/button_save_edit_password"
         android:layout_below="@+id/edit_text_view_edit_password"
         android:background="@color/items_color"
         android:text="@string/settings_save_password_button_txt"
         android:layout_marginBottom="16dp"
+        android:textColor="@color/color_accent"
         />
 
 

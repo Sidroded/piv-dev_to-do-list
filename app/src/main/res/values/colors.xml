@@ -10,5 +10,6 @@
     <color name="items_color">#B2D7EF</color>
     <color name="background_color">#EAF1FB</color>
     <color name="color_accent">#113040</color>
+    <color name="hint">#A3BFCD</color>
 
 </resources>

@@ -7,14 +7,176 @@
     android:background="@color/background_color"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="24dp">
-
+    android:paddingTop="24dp"
+    android:paddingBottom="16dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD NODE"
-        android:textSize="60dp"
-        android:layout_centerInParent="true"/>
+        android:id="@+id/add_note_name_action_text_view_id"
+        android:text="@string/add_node_name_action_text"
+        android:textSize="16dp"
+        android:textColor="@color/color_accent"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/add_note_name_action_edit_text_view_id"
+        android:hint="@string/add_node_name_action_edit_text"
+        android:textSize="16dp"
+        android:layout_below="@+id/add_note_name_action_text_view_id"
+        android:layout_marginBottom="16dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_note_description_text_view_id"
+        android:text="@string/add_node_description_text"
+        android:layout_below="@+id/add_note_name_action_edit_text_view_id"
+        android:textSize="16dp"
+        android:textColor="@color/color_accent"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/add_note_description_edit_text_view_id"
+        android:hint="@string/add_node_description_edit_text"
+        android:textSize="16dp"
+        android:layout_below="@+id/add_note_description_text_view_id"
+        android:layout_marginBottom="16dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/data_time_linear_layout"
+        android:orientation="horizontal"
+        android:layout_below="@+id/add_note_description_edit_text_view_id"
+        android:layout_marginBottom="16dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_node_date_text_view_id"
+                android:text="@string/add_node_date_text"
+                android:textSize="16dp"
+                />
+
+            <EditText
+                android:id="@+id/add_node_date_view_id"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:inputType="date"
+                android:layout_below="@id/add_node_date_text_view_id"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_node_time_text_view_id"
+                android:text="@string/add_node_time_text"
+                android:textSize="16dp"
+                />
+
+            <EditText
+                android:id="@+id/add_node_time_view_id"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:inputType="time"
+                android:layout_below="@id/add_node_time_text_view_id"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_node_friend_text_view_id"
+        android:text="@string/add_node_friend_text"
+        android:textSize="16dp"
+        android:textColor="@color/color_accent"
+        android:layout_below="@id/data_time_linear_layout"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/add_node_set_friend_spinner_id"
+        android:layout_below="@id/add_node_friend_text_view_id"
+        android:background="@color/white"
+        android:layout_marginBottom="16dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_node_category_text_view_id"
+        android:text="@string/add_node_category_text"
+        android:textSize="16dp"
+        android:textColor="@color/color_accent"
+        android:layout_below="@id/add_node_set_friend_spinner_id"
+        android:layout_marginBottom="8dp"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/add_node_set_category_spinner_id"
+        android:layout_below="@id/add_node_category_text_view_id"
+        android:background="@color/white"
+        android:layout_marginBottom="16dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_note_add_file_button_id"
+        android:text="@string/add_node_add_file_button_text"
+        android:background="@color/items_color"
+        android:textColor="@color/color_accent"
+        android:layout_above="@id/add_note_save_note_button"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_note_save_note_button"
+        android:text="@string/add_node_add_node_button_text"
+        android:background="@color/items_color"
+        android:textColor="@color/color_accent"
+        android:layout_above="@id/add_note_cancel_text_view"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_note_cancel_text_view"
+        android:text="@string/add_node_cancel_button_text"
+        android:textSize="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="4dp"
+        />
 
 </RelativeLayout>

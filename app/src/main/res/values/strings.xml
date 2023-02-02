@@ -18,9 +18,9 @@
 
     <!--ADD NOTE STRINGS-->
     <string name="add_node_name_action_text">Назва події</string>
-    <string name="add_node_name_action_edit_text">Назва</string>
+    <string name="add_node_name_action_edit_text">  Назва</string>
     <string name="add_node_description_text">Опис</string>
-    <string name="add_node_description_edit_text">Опис</string>
+    <string name="add_node_description_edit_text">  Опис</string>
     <string name="add_node_date_text">Дата</string>
     <string name="add_node_time_text">Час</string>
     <string name="add_node_friend_text">Учасник</string>
