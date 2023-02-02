@@ -33,5 +33,6 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/registration_button"
         android:text="@string/registration_button"
+        android:background="@color/items_color"
         />
 </RelativeLayout>
