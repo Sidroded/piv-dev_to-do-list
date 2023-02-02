@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_friends_to_mainfragment"
             app:destination="@id/calendar" />
+        <action
+            android:id="@+id/action_friends_to_addFriendFragment"
+            app:destination="@id/addFriendFragment" />
     </fragment>
     <fragment
         android:id="@+id/settings"
@@ -49,4 +52,9 @@
         android:name="com.sidroded.todolist.note.AddNoteFragment"
         android:label="fragment_add_note"
         tools:layout="@layout/fragment_add_note" />
+    <fragment
+        android:id="@+id/addFriendFragment"
+        android:name="com.sidroded.todolist.friends.AddFriendFragment"
+        android:label="fragment_add_friend"
+        tools:layout="@layout/fragment_add_friend" />
 </navigation>
