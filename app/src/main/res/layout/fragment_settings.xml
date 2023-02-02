@@ -6,16 +6,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".SettingsFragment">
+    tools:context=".settings.SettingsFragment"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="24dp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/text_view_edit_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SETTINGS"
-        android:textSize="60sp"
-        android:layout_centerInParent="true"
+        android:text="@string/settings_edit_email_text"
+        android:textSize="16dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/color_accent"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/edit_text_view_edit_email"
+        android:layout_below="@+id/text_view_edit_email"
+        android:hint="@string/settings_edit_email_edit_text"
+        android:textSize="16dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textEmailAddress"
+        />
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/button_save_edit_email"
+        android:layout_below="@+id/edit_text_view_edit_email"
+        android:background="@color/items_color"
+        android:text="@string/settings_save_email_button_txt"
+        android:textColor="@color/color_accent"
+        android:layout_marginBottom="16dp"
+        />
+
+    <TextView
+        android:id="@+id/text_view_edit_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_edit_password_text"
+        android:textSize="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@id/button_save_edit_email"
+        android:textColor="@color/color_accent"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/edit_text_view_edit_password"
+        android:layout_below="@+id/text_view_edit_password"
+        android:hint="@string/settings_edit_password_edit_text"
+        android:textSize="16dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textPassword"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/button_save_edit_password"
+        android:layout_below="@+id/edit_text_view_edit_password"
+        android:background="@color/items_color"
+        android:text="@string/settings_save_password_button_txt"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/color_accent"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/settings_log_out_button"
+        android:layout_alignParentBottom="true"
+        android:background="@color/items_color"
+        android:text="@string/settings_logout_button"
+        android:textColor="@color/color_accent"
         />
 
 
