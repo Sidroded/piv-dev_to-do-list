@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@color/items_color"
     android:elevation="4dp"
+    android:title="@string/app_name"
     >
 
 </Toolbar>

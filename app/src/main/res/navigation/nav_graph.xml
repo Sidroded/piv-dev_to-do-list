@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_calendar_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_calendar_to_calendarCellsFragment"
+            app:destination="@id/calendarCellsFragment" />
     </fragment>
     <fragment
         android:id="@+id/friends"
@@ -57,4 +60,13 @@
         android:name="com.sidroded.todolist.friends.AddFriendFragment"
         android:label="fragment_add_friend"
         tools:layout="@layout/fragment_add_friend" />
+    <fragment
+        android:id="@+id/calendarCellsFragment"
+        android:name="com.sidroded.todolist.calendar.CalendarCellsFragment"
+        android:label="fragment_calendar_cells"
+        tools:layout="@layout/fragment_calendar_cells" >
+        <action
+            android:id="@+id/action_calendarCellsFragment_to_calendar"
+            app:destination="@id/calendar" />
+    </fragment>
 </navigation>
