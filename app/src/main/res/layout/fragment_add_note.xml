@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".note.addnote.AddNoteFragment"
+    tools:context=".note.AddNoteFragment"
     android:background="@color/background_color">
 
     <!-- TODO: Update blank fragment layout -->

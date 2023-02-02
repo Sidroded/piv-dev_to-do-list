@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/calendar"
-        android:name="com.sidroded.todolist.CalendarFragment"
+        android:name="com.sidroded.todolist.calendar.CalendarFragment"
         android:label="fragment_mainfragment"
         tools:layout="@layout/fragment_calendar" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/friends"
-        android:name="com.sidroded.todolist.FriendsFragment"
+        android:name="com.sidroded.todolist.friends.FriendsFragment"
         android:label="fragment_friends"
         tools:layout="@layout/fragment_friends" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/settings"
-        android:name="com.sidroded.todolist.SettingsFragment"
+        android:name="com.sidroded.todolist.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="com.sidroded.todolist.note.addnote.AddNoteFragment"
+        android:name="com.sidroded.todolist.note.AddNoteFragment"
         android:label="fragment_add_note"
         tools:layout="@layout/fragment_add_note" />
 </navigation>

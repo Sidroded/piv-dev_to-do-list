@@ -1,26 +1,22 @@
 package com.sidroded.todolist;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.sidroded.todolist.auth.login.LoginLayout;
+import com.sidroded.todolist.calendar.CalendarFragment;
+import com.sidroded.todolist.friends.FriendsFragment;
+import com.sidroded.todolist.settings.SettingsFragment;
 import com.sidroded.todolist.user.User;
-import com.sidroded.todolist.FriendsFragment;
+
 public class MainActivity extends AppCompatActivity{
 private FirebaseAuth mAuth;
 User user;

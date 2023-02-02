@@ -1,4 +1,4 @@
-package com.sidroded.todolist.note.addnote;
+package com.sidroded.todolist.note;
 
 import android.os.Bundle;
 

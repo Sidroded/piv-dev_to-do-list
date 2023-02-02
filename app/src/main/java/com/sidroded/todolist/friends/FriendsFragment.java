@@ -1,4 +1,4 @@
-package com.sidroded.todolist;
+package com.sidroded.todolist.friends;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.sidroded.todolist.R;
 
 /**
  * A simple {@link Fragment} subclass.
