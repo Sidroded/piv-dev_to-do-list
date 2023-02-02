@@ -145,9 +145,8 @@
         android:id="@+id/add_node_set_category_spinner_id"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_above="@+id/add_note_add_file_button_id"
         android:layout_below="@id/add_node_category_text_view_id"
-        android:layout_marginBottom="97dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/white" />
 
     <Button
@@ -157,7 +156,7 @@
         android:text="@string/add_node_add_file_button_text"
         android:background="@color/items_color"
         android:textColor="@color/color_accent"
-        android:layout_above="@id/add_note_save_note_button"
+        android:layout_below="@id/add_node_set_category_spinner_id"
         />
 
     <Button
@@ -167,7 +166,7 @@
         android:text="@string/add_node_add_node_button_text"
         android:background="@color/items_color"
         android:textColor="@color/color_accent"
-        android:layout_above="@id/add_note_cancel_text_view"
+        android:layout_below="@+id/add_note_add_file_button_id"
         android:layout_marginTop="8dp"
         />
 
@@ -178,7 +177,7 @@
         android:text="@string/add_node_cancel_button_text"
         android:textSize="16dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/add_note_save_note_button"
         android:layout_marginTop="4dp"
         />
 
