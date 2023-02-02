@@ -30,8 +30,6 @@ SettingsFragment settingFragment = new SettingsFragment();
 FriendsFragment friendsFragment = new FriendsFragment();
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -64,10 +62,6 @@ FriendsFragment friendsFragment = new FriendsFragment();
 
     }
 
-    public void lol(View view) {
-        Intent intent = new Intent(this, LoginLayout.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onStart() {
@@ -78,7 +72,7 @@ FriendsFragment friendsFragment = new FriendsFragment();
             user=new User(currentUser.getEmail(),"",currentUser);
             currentUser.reload();
 
-            Toast.makeText(MainActivity.this, "Авторизація успішна", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "Авторизація успішна", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(MainActivity.this, LoginLayout.class);
             startActivity(intent);
