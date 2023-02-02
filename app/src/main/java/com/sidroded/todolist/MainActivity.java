@@ -3,6 +3,7 @@ package com.sidroded.todolist;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -24,7 +25,7 @@ BottomNavigationView bottomNavigationView;
 CalendarFragment calendarFragment = new CalendarFragment();
 SettingsFragment settingFragment = new SettingsFragment();
 FriendsFragment friendsFragment = new FriendsFragment();
-
+Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,9 @@ FriendsFragment friendsFragment = new FriendsFragment();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar=findViewById(R.id.toolbar);
+        setActionBar(toolbar);
+        //toolbar.setTitle("lol");;
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentContainerView);
         NavController navCo = navHostFragment.getNavController();
@@ -41,12 +45,16 @@ FriendsFragment friendsFragment = new FriendsFragment();
             switch (item.getItemId()){
                 case R.id.calendar_item:
                     navCo.navigate(R.id.calendar);
+                    toolbar.setTitle(R.string.calendar_fragment_text);
                     return true;
                 case R.id.friends_item:
                     navCo.navigate(R.id.friends);
+                    toolbar.setTitle(R.string.friends_fragment_tool_text);
+
                     return true;
                 case R.id.settings_item:
                    navCo.navigate(R.id.settings);
+                    toolbar.setTitle(R.string.settings_fragment_tool_text);
 
                     return true;
 

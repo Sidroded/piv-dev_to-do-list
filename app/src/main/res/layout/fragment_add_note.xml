@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -100,9 +105,9 @@
                 android:id="@+id/add_node_time_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
+                android:layout_below="@id/add_node_time_text_view_id"
                 android:ems="10"
-                android:inputType="time"
-                android:layout_below="@id/add_node_time_text_view_id"/>
+                android:inputType="time" />
 
         </RelativeLayout>
 
@@ -119,13 +124,11 @@
         android:layout_marginBottom="8dp"/>
 
     <Spinner
+        android:id="@+id/add_node_set_friend_spinner_id"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/add_node_set_friend_spinner_id"
         android:layout_below="@id/add_node_friend_text_view_id"
-        android:background="@color/white"
-        android:layout_marginBottom="16dp"
-        />
+        android:background="@color/white" />
 
     <TextView
         android:layout_width="match_parent"
@@ -139,13 +142,13 @@
         />
 
     <Spinner
+        android:id="@+id/add_node_set_category_spinner_id"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/add_node_set_category_spinner_id"
+        android:layout_above="@+id/add_note_add_file_button_id"
         android:layout_below="@id/add_node_category_text_view_id"
-        android:background="@color/white"
-        android:layout_marginBottom="16dp"
-        />
+        android:layout_marginBottom="97dp"
+        android:background="@color/white" />
 
     <Button
         android:layout_width="match_parent"
@@ -180,3 +183,4 @@
         />
 
 </RelativeLayout>
+</ScrollView>
