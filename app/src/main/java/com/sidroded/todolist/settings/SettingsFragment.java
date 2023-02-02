@@ -1,5 +1,6 @@
 package com.sidroded.todolist.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +12,15 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
+import com.sidroded.todolist.auth.login.LoginLayout;
 
 
 public class SettingsFragment extends Fragment {
@@ -23,6 +29,7 @@ public class SettingsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    FirebaseAuth mAuth;
 
 
     private String mParam1;
@@ -61,9 +68,16 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            toolbar.setTitle("Налаштування");
-        }
+        Button logout_button = view.findViewById(R.id.settings_log_out_button);
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+
+                Intent intent = new Intent(getContext(), LoginLayout.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -15,6 +15,7 @@
     <string name="settings_edit_password_text">Змінити пароль</string>
     <string name="settings_edit_password_edit_text">Новий пароль</string>
     <string name="settings_save_password_button_txt">Зберегти</string>
+    <string name="settings_logout_button">Вийти з аккаунту</string>
 
     <!--ADD NOTE STRINGS-->
     <string name="add_node_name_action_text">Назва події</string>

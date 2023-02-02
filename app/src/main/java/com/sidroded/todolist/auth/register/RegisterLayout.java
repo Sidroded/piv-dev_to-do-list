@@ -37,6 +37,8 @@ public class RegisterLayout extends AppCompatActivity {
                 Toast.makeText(RegisterLayout.this, "Заповніть всі поля", Toast.LENGTH_SHORT).show();
             } else if (password_register.getText().toString().length() < 6) {
                 Toast.makeText(RegisterLayout.this, "Пароль має бути більше 6 символів", Toast.LENGTH_SHORT).show();
+            } else if (!email_register.getText().toString().contains("@")) {
+                Toast.makeText(RegisterLayout.this, "Введіть ваш email", Toast.LENGTH_SHORT).show();
             } else {
                 mAuth.createUserWithEmailAndPassword(email_register.getText().toString(), password_register.getText().toString())
                         .addOnCompleteListener(task -> {
