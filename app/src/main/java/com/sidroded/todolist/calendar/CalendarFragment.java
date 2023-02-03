@@ -1,5 +1,6 @@
 package com.sidroded.todolist.calendar;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sidroded.todolist.R;
+import com.sidroded.todolist.note.AddNoteActivity;
 
 public class CalendarFragment extends Fragment {
 
@@ -60,7 +62,8 @@ public class CalendarFragment extends Fragment {
         calendarFOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_calendar_to_addNoteFragment);
+                Intent intent = new Intent(getContext(), AddNoteActivity.class);
+                startActivity(intent);
             }
         });
     }
