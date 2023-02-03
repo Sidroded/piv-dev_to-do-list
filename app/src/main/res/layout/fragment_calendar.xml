@@ -21,6 +21,7 @@
         android:id="@+id/calendarFloatingActionButton"
         android:layout_width="111dp"
         android:layout_height="64dp"
+        app:borderWidth="0dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
