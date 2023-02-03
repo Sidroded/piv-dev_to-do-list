@@ -1,14 +1,7 @@
 package com.sidroded.todolist;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
-
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,20 +14,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.sidroded.todolist.auth.login.LoginLayout;
 import com.sidroded.todolist.calendar.CalendarFragment;
 import com.sidroded.todolist.friends.FriendsFragment;
-import com.sidroded.todolist.note.AddNoteFragment;
 import com.sidroded.todolist.settings.SettingsFragment;
 import com.sidroded.todolist.user.User;
 
-import java.util.Calendar;
-
-public class MainActivity extends AppCompatActivity{
-private FirebaseAuth mAuth;
-User user;
-BottomNavigationView bottomNavigationView;
-CalendarFragment calendarFragment = new CalendarFragment();
-SettingsFragment settingFragment = new SettingsFragment();
-FriendsFragment friendsFragment = new FriendsFragment();
-Toolbar toolbar;
+public class MainActivity extends AppCompatActivity {
+    User user;
+    BottomNavigationView bottomNavigationView;
+    CalendarFragment calendarFragment = new CalendarFragment();
+    SettingsFragment settingFragment = new SettingsFragment();
+    FriendsFragment friendsFragment = new FriendsFragment();
+    Toolbar toolbar;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +32,7 @@ Toolbar toolbar;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar=findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setActionBar(toolbar);
         //toolbar.setTitle("lol");;
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
@@ -51,7 +41,7 @@ Toolbar toolbar;
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.calendar_item:
                     navCo.navigate(R.id.calendar);
                     toolbar.setTitle(R.string.calendar_fragment_text);
@@ -62,7 +52,7 @@ Toolbar toolbar;
 
                     return true;
                 case R.id.settings_item:
-                   navCo.navigate(R.id.settings);
+                    navCo.navigate(R.id.settings);
                     toolbar.setTitle(R.string.settings_fragment_tool_text);
 
                     return true;
@@ -80,8 +70,8 @@ Toolbar toolbar;
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            user=new User(currentUser.getEmail(),"",currentUser);
+        if (currentUser != null) {
+            user = new User(currentUser.getEmail(), "", currentUser);
             currentUser.reload();
 
             //Toast.makeText(MainActivity.this, "Авторизація успішна", Toast.LENGTH_SHORT).show();
