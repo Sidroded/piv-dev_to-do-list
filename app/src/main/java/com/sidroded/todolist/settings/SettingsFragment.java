@@ -1,5 +1,7 @@
 package com.sidroded.todolist.settings;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,12 +11,17 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +37,12 @@ public class SettingsFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     FirebaseAuth mAuth;
+    FirebaseUser user;
+    EditText newEmailEditText;
+    Button setNewEmail;
+    EditText newPasswordEditText;
+    EditText newPasswordCheckEditText;
+    Button setNewPassword;
 
 
     private String mParam1;
@@ -68,15 +81,45 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         Button logout_button = view.findViewById(R.id.settings_log_out_button);
-        logout_button.setOnClickListener(new View.OnClickListener() {
+        newEmailEditText = view.findViewById(R.id.edit_text_view_edit_email);
+        setNewEmail = view.findViewById(R.id.button_save_edit_email);
+        newPasswordEditText = view.findViewById(R.id.edit_text_view_edit_password);
+        newPasswordCheckEditText = view.findViewById(R.id.edit_text_check_edit_password);
+        setNewPassword = view.findViewById(R.id.button_save_edit_password);
+        logout_button.setOnClickListener(v -> {
+            mAuth = FirebaseAuth.getInstance();
+            mAuth.signOut();
+
+            Intent intent = new Intent(getContext(), LoginLayout.class);
+            startActivity(intent);
+        });
+
+        setNewEmail.setOnClickListener(v -> {
+            if (!(newEmailEditText.getText().toString().isEmpty()) && (newEmailEditText.getText().toString().contains("@"))) {
+                user.updateEmail("user@example.com")
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "User email address updated.");
+                                Toast.makeText(getContext(), "Ваш email змінено", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), "Для того щоб змінити пароль заново пройдіть авторизацію", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            } else {
+                Toast.makeText(getContext(), "Введіть ваш email", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        setNewPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth = FirebaseAuth.getInstance();
-                mAuth.signOut();
+                if (!(newPasswordEditText.getText().toString().isEmpty() && newPasswordCheckEditText.getText().toString().isEmpty())) {
 
-                Intent intent = new Intent(getContext(), LoginLayout.class);
-                startActivity(intent);
+                }
             }
         });
     }
