@@ -1,5 +1,6 @@
 package com.sidroded.todolist.calendar;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,48 +9,51 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.note.AddNoteActivity;
 
 public class CalendarFragment extends Fragment {
+   ListView task_list;
+    String[] maintitle ={
+            "Title 1","Title 2",
+            "Title 3","Title 4",
+            "Title 5",
+    };
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
+    String[] subtitle ={
+            "Sub Title 1","Sub Title 2",
+            "Sub Title 3","Sub Title 4",
+            "Sub Title 5",
+    };
 
     public CalendarFragment() {
-        // Required empty public constructor
     }
 
-    public static CalendarFragment newInstance(String param1, String param2) {
-        CalendarFragment fragment = new CalendarFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_calendar, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
+        task_list= rootView.findViewById(R.id.task_list);
+        ListViewAdapter adapter=new ListViewAdapter(getActivity(), maintitle, subtitle);
+        task_list.setAdapter(adapter);
+        return rootView;
+
     }
 
     @Override
@@ -57,7 +61,6 @@ public class CalendarFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         NavController navController = Navigation.findNavController(view);
-
         FloatingActionButton calendarFOB = view.findViewById(R.id.calendarFloatingActionButton);
         calendarFOB.setOnClickListener(new View.OnClickListener() {
             @Override

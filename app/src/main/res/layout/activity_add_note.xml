@@ -180,6 +180,7 @@
             android:id="@+id/add_note_cancel_text_view"
             android:text="@string/add_node_cancel_button_text"
             android:textSize="16dp"
+            android:onClick="cancel"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/add_note_save_note_button"
             android:layout_marginTop="4dp"
