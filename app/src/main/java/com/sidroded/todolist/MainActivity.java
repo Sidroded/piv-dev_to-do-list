@@ -1,8 +1,14 @@
 package com.sidroded.todolist;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +21,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.sidroded.todolist.auth.login.LoginLayout;
 import com.sidroded.todolist.calendar.CalendarFragment;
 import com.sidroded.todolist.friends.FriendsFragment;
+import com.sidroded.todolist.note.AddNoteFragment;
 import com.sidroded.todolist.settings.SettingsFragment;
 import com.sidroded.todolist.user.User;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity{
 private FirebaseAuth mAuth;
@@ -63,7 +72,6 @@ Toolbar toolbar;
         });
 
         mAuth = FirebaseAuth.getInstance();
-
     }
 
 
