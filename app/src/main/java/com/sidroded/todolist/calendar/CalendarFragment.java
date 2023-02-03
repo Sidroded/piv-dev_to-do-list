@@ -20,11 +20,20 @@ import android.widget.ListView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.note.AddNoteActivity;
-import com.sidroded.todolist.user.OpenDataClass;
 
 public class CalendarFragment extends Fragment {
    ListView task_list;
+    String[] maintitle ={
+            "Title 1","Title 2",
+            "Title 3","Title 4",
+            "Title 5",
+    };
 
+    String[] subtitle ={
+            "Sub Title 1","Sub Title 2",
+            "Sub Title 3","Sub Title 4",
+            "Sub Title 5",
+    };
 
     public CalendarFragment() {
     }
@@ -41,7 +50,7 @@ public class CalendarFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         task_list= rootView.findViewById(R.id.task_list);
-        ListViewAdapter adapter=new ListViewAdapter(getActivity(), OpenDataClass.getMaintitle(), OpenDataClass.getTitle_context());
+        ListViewAdapter adapter=new ListViewAdapter(getActivity(), maintitle, subtitle);
         task_list.setAdapter(adapter);
         return rootView;
 
