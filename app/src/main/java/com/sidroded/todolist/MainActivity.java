@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     SettingsFragment settingFragment = new SettingsFragment();
     FriendsFragment friendsFragment = new FriendsFragment();
     Toolbar toolbar;
+    NavController navCo;
     private FirebaseAuth mAuth;
 
     @Override
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentContainerView);
-        NavController navCo = navHostFragment.getNavController();
+        navCo = navHostFragment.getNavController();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -91,5 +94,18 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.bottom_nav_toolbar_menu, menu);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.calendar_item_ic:
+                navCo.navigate(R.id.calendarCellsFragment);
+                break;
+            case R.id.filter_item_ic:
+                Toast.makeText(this, "Хули тыкашь мразь а?", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
