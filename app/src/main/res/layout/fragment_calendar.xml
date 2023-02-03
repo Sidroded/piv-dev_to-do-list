@@ -9,13 +9,6 @@
     tools:context=".calendar.CalendarFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="CALENDAR"
-        android:textSize="60sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/calendarFloatingActionButton"
@@ -32,4 +25,19 @@
         android:backgroundTint="@color/items_color"
         app:srcCompat="@drawable/ic_floating_button_add"
         />
+
+    <ListView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+
+        android:id="@+id/task_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:dividerHeight="10dp"
+        android:divider="@color/background_color"
+        />
+
 </RelativeLayout>
