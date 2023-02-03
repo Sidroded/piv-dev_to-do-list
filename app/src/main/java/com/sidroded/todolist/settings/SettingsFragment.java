@@ -99,13 +99,13 @@ public class SettingsFragment extends Fragment {
 
         setNewEmail.setOnClickListener(v -> {
             if (!(newEmailEditText.getText().toString().isEmpty()) && (newEmailEditText.getText().toString().contains("@"))) {
-                user.updateEmail("user@example.com")
+                user.updateEmail(newEmailEditText.getText().toString())
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "User email address updated.");
                                 Toast.makeText(getContext(), "Ваш email змінено", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getContext(), "Для того щоб змінити пароль заново пройдіть авторизацію", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Для того щоб змінити email заново пройдіть авторизацію", Toast.LENGTH_SHORT).show();
                             }
                         });
             } else {
@@ -117,8 +117,25 @@ public class SettingsFragment extends Fragment {
         setNewPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(newPasswordEditText.getText().toString().isEmpty() && newPasswordCheckEditText.getText().toString().isEmpty())) {
+                if (!(newPasswordEditText.getText().toString().isEmpty() && newPasswordCheckEditText.getText().toString().isEmpty()) &&
+                newPasswordEditText.getText().toString().equals(newPasswordCheckEditText.getText().toString())) {
 
+                    user.updatePassword(newPasswordEditText.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "User password updated.");
+                                        Toast.makeText(getContext(), "Пароль успішно змінено", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(getContext(), "Для того щоб змінити пароль заново пройдіть авторизацію", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                } else if (newPasswordEditText.getText().toString().isEmpty() && newPasswordCheckEditText.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Заповніть всі поля", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Паролі не співпадають", Toast.LENGTH_SHORT).show();
                 }
             }
         });
