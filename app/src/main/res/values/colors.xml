@@ -11,5 +11,6 @@
     <color name="background_color">#EAF1FB</color>
     <color name="color_accent">#113040</color>
     <color name="hint">#A3BFCD</color>
+    <color name="item_color">#B2D7EF</color>
 
 </resources>

@@ -16,6 +16,7 @@
     <string name="settings_edit_password_edit_text">Новий пароль</string>
     <string name="settings_save_password_button_txt">Зберегти</string>
     <string name="settings_logout_button">Вийти з аккаунту</string>
+    <string name="settings_check_password">Повторіть пароль</string>
 
     <!--ADD NOTE STRINGS-->
     <string name="add_node_name_action_text">Назва події</string>
@@ -31,5 +32,8 @@
     <string name="add_node_cancel_button_text">Скасувати</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="calendar_fragment_text">Ваші Справи</string>
+    <string name="friends_fragment_tool_text">Список Учасників</string>
+    <string name="settings_fragment_tool_text">Налаштування</string>
 
 </resources>
