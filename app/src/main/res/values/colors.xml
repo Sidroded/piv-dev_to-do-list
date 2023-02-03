@@ -12,5 +12,7 @@
     <color name="color_accent">#113040</color>
     <color name="hint">#A3BFCD</color>
     <color name="item_color">#B2D7EF</color>
+    <color name="whiteblue">#F3F6FC</color>
+
 
 </resources>

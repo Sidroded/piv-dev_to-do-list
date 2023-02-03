@@ -18,7 +18,7 @@
         android:layout_height="60sp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
-        android:background="@color/white"
+        android:background="@color/whiteblue"
         />
 
 
