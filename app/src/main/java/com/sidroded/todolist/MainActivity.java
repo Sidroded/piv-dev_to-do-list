@@ -2,9 +2,12 @@ package com.sidroded.todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -28,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         toolbar = findViewById(R.id.toolbar);
-        setActionBar(toolbar);
-        //toolbar.setTitle("lol");;
+        setSupportActionBar(toolbar);
+
+
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentContainerView);
         NavController navCo = navHostFragment.getNavController();
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.calendar_item:
                     navCo.navigate(R.id.calendar);
                     toolbar.setTitle(R.string.calendar_fragment_text);
+
                     return true;
                 case R.id.friends_item:
                     navCo.navigate(R.id.friends);
@@ -79,5 +84,12 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginLayout.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_nav_toolbar_menu, menu);
+
+        return true;
     }
 }

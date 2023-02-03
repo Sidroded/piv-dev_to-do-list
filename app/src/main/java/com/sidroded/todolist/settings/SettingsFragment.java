@@ -13,6 +13,8 @@ import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -68,6 +70,8 @@ public class SettingsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -133,5 +137,11 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getContext(), "Паролі не співпадають", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.bottom_nav_menu, menu);
+        menu.clear();//например убрать все элементы меню.
     }
 }
