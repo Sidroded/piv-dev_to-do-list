@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.calendar_fragment_text);
         setSupportActionBar(toolbar);
 
 

@@ -1,5 +1,6 @@
 package com.sidroded.todolist.friends;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sidroded.todolist.R;
+import com.sidroded.todolist.note.NoteViewActivity;
 
 public class FriendsFragment extends Fragment {
 
@@ -66,7 +68,9 @@ public class FriendsFragment extends Fragment {
         calendarFOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_friends_to_addFriendFragment);
+                Intent intent = new Intent(getContext(), NoteViewActivity.class);
+                startActivity(intent);
+                //navController.navigate(R.id.action_friends_to_addFriendFragment);
             }
         });
     }
