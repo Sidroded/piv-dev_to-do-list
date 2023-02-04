@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
@@ -32,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     CalendarFragment calendarFragment = new CalendarFragment();
     SettingsFragment settingFragment = new SettingsFragment();
     FriendsFragment friendsFragment = new FriendsFragment();
-    Toolbar toolbar;
+    //Toolbar toolbar;
     NavController navCo;
+
 
 
     FirebaseAuth mAuth;
@@ -44,11 +46,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        toolbar = findViewById(R.id.toolbar);
+        ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(R.string.calendar_fragment_text);
-        setSupportActionBar(toolbar);
+
+        /*toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.calendar_fragment_text);
+        setSupportActionBar(toolbar);*/
 
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()

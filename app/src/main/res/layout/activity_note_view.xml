@@ -12,9 +12,9 @@
             android:layout_height="match_parent"
             >
 
-            <include layout="@layout/toolbar"
+            <!--<include layout="@layout/toolbar"
                 android:id="@+id/toolbar_note_view"
-                />
+                />-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="16dp"
                 android:paddingRight="16dp"
-                android:layout_below="@+id/toolbar_note_view">
+                >
 
                 <RelativeLayout
                     android:id="@+id/note_view_data_time_layout"

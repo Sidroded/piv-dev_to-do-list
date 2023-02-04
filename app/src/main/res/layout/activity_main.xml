@@ -8,9 +8,9 @@
     tools:context=".MainActivity"
     >
 
-    <include layout="@layout/toolbar"
+    <!--<include layout="@layout/toolbar"
         android:id="@+id/toolbar"
-        />
+        />-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -35,7 +35,6 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"
-        android:layout_below="@+id/toolbar"
         android:layout_above="@+id/bottomNavigationView"
         />
 
