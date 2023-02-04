@@ -12,24 +12,28 @@
         android:background="@color/item_color"
 
         >
+
         <TextView
-            android:background="@color/item_color"
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textStyle="bold"
-            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:padding="2dp"
-            android:textColor="#4d4d4d" />
-        <TextView
             android:background="@color/item_color"
+            android:fontFamily="@font/rubikbold"
+            android:padding="2dp"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#4d4d4d"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:background="@color/item_color"
+            android:fontFamily="@font/rubikregular"
+            android:text="TextView" />
     </LinearLayout>
 </LinearLayout>

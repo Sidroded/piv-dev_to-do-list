@@ -13,6 +13,10 @@
     <color name="hint">#A3BFCD</color>
     <color name="item_color">#B2D7EF</color>
     <color name="whiteblue">#F3F6FC</color>
+    <color name="darkblue">#166BA3</color>
+    <color name="normalblue">#6FA0C0</color>
+    <color name="grayblue">#A3BFCD</color>
+
 
 
 </resources>
