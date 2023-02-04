@@ -25,6 +25,7 @@ import android.widget.Toolbar;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.sidroded.todolist.MainActivity;
@@ -40,10 +41,10 @@ public class SettingsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     FirebaseAuth mAuth;
     FirebaseUser user;
-    EditText newEmailEditText;
+    TextInputEditText newEmailEditText;
     Button setNewEmail;
-    EditText newPasswordEditText;
-    EditText newPasswordCheckEditText;
+    TextInputEditText newPasswordEditText;
+    TextInputEditText newPasswordCheckEditText;
     Button setNewPassword;
 
 

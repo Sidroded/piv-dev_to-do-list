@@ -17,88 +17,136 @@
         android:id="@+id/text_view_edit_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubikregular"
         android:text="@string/settings_edit_email_text"
-        android:textSize="16dp"
-        android:layout_marginBottom="8dp"
         android:textColor="@color/color_accent"
-        />
+        android:textSize="16dp" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/new_email_text_input_edit_text"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/edit_text_view_edit_email"
         android:layout_below="@+id/text_view_edit_email"
-        android:hint="@string/settings_edit_email_edit_text"
-        android:textSize="16dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubikregular"
+        android:hint="@string/settings_edit_email_edit_text"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxBackgroundColor="@color/white"
+        android:theme="@style/MyTextInputLayout_overlay"
+
+
         android:inputType="textEmailAddress"
-        />
-    
+        android:textSize="16dp" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_text_view_edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubikregular"
+        android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
+        android:id="@+id/button_save_edit_email"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/button_save_edit_email"
-        android:layout_below="@+id/edit_text_view_edit_email"
-        android:background="@color/items_color"
-        android:text="@string/settings_save_email_button_txt"
-        android:textColor="@color/color_accent"
+        android:layout_below="@+id/new_email_text_input_edit_text"
         android:layout_marginBottom="16dp"
-        />
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/rubikregular"
+        android:text="@string/settings_save_email_button_txt"
+        android:textAllCaps="false"
+        android:textColor="@color/color_accent"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/text_view_edit_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings_edit_password_text"
-        android:textSize="16dp"
-        android:layout_marginBottom="8dp"
         android:layout_below="@id/button_save_edit_email"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubikregular"
+        android:text="@string/settings_edit_password_text"
         android:textColor="@color/color_accent"
-        />
+        android:textSize="16dp" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/new_password_edit_text_input"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/edit_text_view_edit_password"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxBackgroundColor="@color/white"
+        android:theme="@style/MyTextInputLayout_overlay"
+
         android:layout_below="@+id/text_view_edit_password"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubikregular"
         android:hint="@string/settings_edit_password_edit_text"
-        android:textSize="16dp"
-        android:layout_marginBottom="8dp"
         android:inputType="textPassword"
-        />
+        android:textSize="16dp" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_text_view_edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubikregular"
+        android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/check_new_password_imput_edit_text"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/edit_text_check_edit_password"
-        android:layout_below="@+id/edit_text_view_edit_password"
+        android:layout_below="@+id/new_password_edit_text_input"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubikregular"
         android:hint="@string/settings_check_password"
-        android:textSize="16dp"
-        android:layout_marginBottom="8dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxBackgroundColor="@color/white"
+        android:theme="@style/MyTextInputLayout_overlay"
+
+
         android:inputType="textPassword"
-        />
+        android:textSize="16dp" >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_text_check_edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubikregular"
+        android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
         android:id="@+id/button_save_edit_password"
-        android:layout_below="@+id/edit_text_check_edit_password"
-        android:background="@color/items_color"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/check_new_password_imput_edit_text"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/rubikregular"
         android:text="@string/settings_save_password_button_txt"
-        android:layout_marginBottom="16dp"
+        android:textAllCaps="false"
         android:textColor="@color/color_accent"
-        />
+        android:textSize="16sp" />
 
 
     <Button
+        android:textAllCaps="false"
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/settings_log_out_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:id="@+id/settings_log_out_button"
         android:layout_alignParentBottom="true"
-        android:background="@color/items_color"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/rubikregular"
         android:text="@string/settings_logout_button"
-        android:textColor="@color/color_accent"
-        />
+        android:textColor="@color/color_accent" />
 
 
 </RelativeLayout>

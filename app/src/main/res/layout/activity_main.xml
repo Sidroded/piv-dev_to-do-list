@@ -15,9 +15,15 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
+        app:itemBackground="@color/whiteblue"
+        app:itemIconTint="@color/color_accent"
+        app:itemTextColor="@color/color_accent"
         android:layout_height="60sp"
+
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
+        app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavigationInactive"
         android:background="@color/whiteblue"
         />
 
