@@ -69,7 +69,7 @@ public class AddNoteActivity extends AppCompatActivity {
 
     public void add(View v) {
         NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(),"Hui","ebka");
-        db.collection( MainActivity.getUser().getUid()).add(addingElement);
+        db.collection( MainActivity.getUser().getUser().getUid()).add(addingElement);
         Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
         startActivity(intent);
     }

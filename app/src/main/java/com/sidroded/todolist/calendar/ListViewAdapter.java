@@ -29,11 +29,14 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     }
 
 void lol(List<NoteModel> dataList){
-        for(int i=0;i<dataList.size();i++)
-    {
-        maintitle.add(dataList.get(i).getTittle());
-        subtitle.add(dataList.get(i).getDescription());
-    }
+        if (dataList.size()!=0){
+            for(int i=0;i<dataList.size();i++)
+            {
+                maintitle.add(dataList.get(i).getTittle());
+                subtitle.add(dataList.get(i).getDescription());
+            }
+        }
+
 }
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();

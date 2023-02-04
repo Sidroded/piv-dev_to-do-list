@@ -24,7 +24,9 @@ import com.sidroded.todolist.settings.SettingsFragment;
 import com.sidroded.todolist.user.User;
 
 public class MainActivity extends AppCompatActivity {
-    User user;
+    public static User user;
+
+
 
     BottomNavigationView bottomNavigationView;
     CalendarFragment calendarFragment = new CalendarFragment();
@@ -32,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
     FriendsFragment friendsFragment = new FriendsFragment();
     Toolbar toolbar;
     NavController navCo;
-     FirebaseAuth mAuth;
-    static FirebaseUser currentUser;
+
+
+    FirebaseAuth mAuth;
+     static FirebaseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -75,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
     }
-
+    public static User getUser() {
+        return user;
+    }
 
     @Override
     public void onStart() {
@@ -92,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-    public static FirebaseUser getUser(){return currentUser;}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
