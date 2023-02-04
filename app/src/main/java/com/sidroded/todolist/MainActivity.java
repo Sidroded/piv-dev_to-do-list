@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser != null) {
             user = new User(currentUser.getEmail(), "", currentUser);
             currentUser.reload();
+            navCo.navigate(R.id.calendar);
 
             //Toast.makeText(MainActivity.this, "Авторизація успішна", Toast.LENGTH_SHORT).show();
         } else {

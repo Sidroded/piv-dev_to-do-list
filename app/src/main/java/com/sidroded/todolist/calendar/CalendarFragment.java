@@ -45,14 +45,16 @@ List<NoteModel> dataList=new ArrayList<>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
 
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         task_list= rootView.findViewById(R.id.task_list);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         if(MainActivity.getUser()!=null){
             db.collection(MainActivity.getUser().getUser().getUid())
                     .get()
@@ -74,6 +76,7 @@ List<NoteModel> dataList=new ArrayList<>();
         return rootView;
 
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
