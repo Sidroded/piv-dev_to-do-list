@@ -32,6 +32,7 @@
     <string name="add_node_add_node_button_text">Додати подію</string>
     <string name="add_node_cancel_button_text">Скасувати</string>
     <string name="add_node_friend_action_edit_text">Оберіть учасника</string>
+    <string name="add_note_toolbar_title">Нова подія</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="calendar_fragment_text">Ваші cправи</string>
@@ -52,6 +53,7 @@
     <string name="note_view_edit_button_title_text">Редагувати</string>
     <string name="note_view_delete_button_title_text">Видалити</string>
     <string name="note_view_back_button_title_text">Назад</string>
+    <string name="note_view_toolbar_title_text">Перегляд події</string>
 
 
 </resources>

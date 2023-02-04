@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sidroded.todolist.MainActivity;
@@ -27,6 +28,7 @@ public class AddNoteActivity extends AppCompatActivity {
     FirebaseFirestore db;
     EditText title;
     EditText description;
+    private Toolbar toolbar;
 
     Calendar dateAndTime = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -64,6 +66,11 @@ public class AddNoteActivity extends AppCompatActivity {
         date.setText(DateUtils.formatDateTime(this,
                 dateAndTime.getTimeInMillis(),
                 DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
+
+        toolbar = findViewById(R.id.toolbar_add_note);
+        /*setSupportActionBar(toolbar);*/
+
+        toolbar.setTitle(R.string.add_note_toolbar_title);
 
     }
 
