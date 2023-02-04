@@ -63,12 +63,13 @@ List<NoteModel> dataList=new ArrayList<>();
                                 dataList.add(document.toObject(NoteModel.class));
                                 Log.d("HUI", document.toObject(NoteModel.class).getTittle());
                             }
+                            ListViewAdapter adapter=new  ListViewAdapter(getActivity(), dataList);
+                            task_list.setAdapter(adapter);
                         } else {
                             //Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     });
-           ListViewAdapter adapter=new  ListViewAdapter(getActivity(), dataList);
-            task_list.setAdapter(adapter);
+
         }
         return rootView;
 
