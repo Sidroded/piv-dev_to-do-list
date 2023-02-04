@@ -37,5 +37,21 @@
     <string name="calendar_fragment_text">Ваші cправи</string>
     <string name="friends_fragment_tool_text">Список учасників</string>
     <string name="settings_fragment_tool_text">Налаштування</string>
+    
+    <!--NOTE VIEW STRINGS-->
+    <string name="note_view_time_text">00:00</string>
+    <string name="note_view_date_text">21.12.2000</string>
+    <string name="note_view_title_text">Title</string>
+    <string name="note_view_description_text">Description text</string>
+    <string name="note_view_friends_title_text">Учасники</string>
+    <string name="note_view_friends_list_text">Не обрано</string>
+    <string name="note_view_category_title_text">Категорія</string>
+    <string name="note_view_category_list_text">Не обрано</string>
+    <string name="note_view_file_title">Файл</string>
+    <string name="note_view_file_name_text">Не обрано</string>
+    <string name="note_view_edit_button_title_text">Редагувати</string>
+    <string name="note_view_delete_button_title_text">Видалити</string>
+    <string name="note_view_back_button_title_text">Назад</string>
+
 
 </resources>
