@@ -212,12 +212,15 @@
             />
 
         <Button
+
             android:letterSpacing="0"
+
             android:id="@+id/add_note_save_note_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/add_note_add_file_button_id"
             android:layout_marginTop="8dp"
+
 
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/rubikregular"
@@ -227,6 +230,7 @@
             android:textSize="16sp"
             style="?android:attr/borderlessButtonStyle"
             />
+
 
         <TextView
             android:layout_width="wrap_content"

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/filter_item_ic"
+        android:title="Фільтр"
+        android:icon="@drawable/ic_calendar_filter_menu"
+        app:showAsAction="always"
+        android:visible="true"
+        />
+
     <item android:id="@+id/calendar_item_ic"
         android:title="Календар"
         android:icon="@drawable/ic_calendar_today_menu"
@@ -8,10 +16,11 @@
         android:visible="true"
         />
 
-    <item android:id="@+id/filter_item_ic"
-        android:title="Фільтр"
-        android:icon="@drawable/ic_calendar_filter_menu"
-        app:showAsAction="always"
-        android:visible="true"
+
+    <item android:id="@+id/calendar_main_ic"
+        android:title="Календар лист"
+        android:icon="@drawable/nav_menu"
+        app:showAsAction="ifRoom"
+        android:visible="false"
         />
 </menu>
