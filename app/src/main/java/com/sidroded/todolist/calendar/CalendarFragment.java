@@ -51,8 +51,24 @@ List<NoteModel> dataList=new ArrayList<>();
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         task_list= rootView.findViewById(R.id.task_list);
-        ListViewAdapter adapter=new ListViewAdapter(getActivity(), dataList);
-        task_list.setAdapter(adapter);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        if(MainActivity.getUser()!=null){
+            db.collection(MainActivity.getUser().getUser().getUid())
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
+                                dataList.add(document.toObject(NoteModel.class));
+                                Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                            }
+                        } else {
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    });
+            ListViewAdapter adapter=new ListViewAdapter(getActivity(), dataList);
+            task_list.setAdapter(adapter);
+        }
         return rootView;
 
     }
@@ -60,27 +76,11 @@ List<NoteModel> dataList=new ArrayList<>();
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
         //NavController navController = Navigation.findNavController(view);
         FloatingActionButton calendarFOB = view.findViewById(R.id.calendarFloatingActionButton);
-        if(MainActivity.getUser()!=null){
-            db.collection(MainActivity.getUser().getUser().getUid())
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    //Log.d(TAG, document.getId() + " => " + document.getData());
-                                    dataList.add(document.toObject(NoteModel.class));
-                                    Log.d("HUI",document.toObject(NoteModel.class).getTittle().toString());
-                                }
-                            } else {
-                                //Log.d(TAG, "Error getting documents: ", task.getException());
-                            }
-                        }
-                    });
-        }
+
 
         calendarFOB.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), AddNoteActivity.class);
