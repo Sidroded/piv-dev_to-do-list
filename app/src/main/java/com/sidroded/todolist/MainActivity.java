@@ -117,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.filter_item_ic:
                 Toast.makeText(this, "Хули тыкашь мразь а?", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.calendar_main_ic:
+                navCo.navigate(R.id.calendar);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

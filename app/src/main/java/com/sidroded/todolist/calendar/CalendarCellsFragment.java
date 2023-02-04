@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -52,8 +51,9 @@ public class CalendarCellsFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.bottom_nav_menu, menu);
-        
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.findItem(R.id.calendar_item_ic).setVisible(false);
+        menu.findItem(R.id.calendar_main_ic).setVisible(true);
     }
 }
