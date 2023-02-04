@@ -54,7 +54,6 @@ public class CalendarCellsFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.bottom_nav_menu, menu);
-        menu.getItem(R.id.calendar_main_ic).setVisible(true);
-        menu.getItem(R.id.calendar_item_ic).setVisible(false);
+        
     }
 }
