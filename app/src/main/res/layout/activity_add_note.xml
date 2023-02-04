@@ -164,15 +164,15 @@
             />
 
         <Button
+            android:id="@+id/add_note_save_note_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/add_note_save_note_button"
-            android:text="@string/add_node_add_node_button_text"
-            android:background="@color/items_color"
-            android:textColor="@color/color_accent"
             android:layout_below="@+id/add_note_add_file_button_id"
             android:layout_marginTop="8dp"
-            />
+            android:background="@color/items_color"
+            android:onClick="add"
+            android:text="@string/add_node_add_node_button_text"
+            android:textColor="@color/color_accent" />
 
         <TextView
             android:layout_width="wrap_content"

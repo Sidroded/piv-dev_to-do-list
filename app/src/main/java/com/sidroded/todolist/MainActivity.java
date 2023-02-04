@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.sidroded.todolist.auth.login.LoginLayout;
 import com.sidroded.todolist.calendar.CalendarFragment;
 import com.sidroded.todolist.friends.FriendsFragment;
@@ -24,18 +25,21 @@ import com.sidroded.todolist.user.User;
 
 public class MainActivity extends AppCompatActivity {
     User user;
+
     BottomNavigationView bottomNavigationView;
     CalendarFragment calendarFragment = new CalendarFragment();
     SettingsFragment settingFragment = new SettingsFragment();
     FriendsFragment friendsFragment = new FriendsFragment();
     Toolbar toolbar;
     NavController navCo;
-    private FirebaseAuth mAuth;
-
+     FirebaseAuth mAuth;
+    static FirebaseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         toolbar = findViewById(R.id.toolbar);
@@ -77,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+         currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             user = new User(currentUser.getEmail(), "", currentUser);
             currentUser.reload();
@@ -88,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+    public static FirebaseUser getUser(){return currentUser;}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
