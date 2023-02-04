@@ -9,11 +9,11 @@
     android:padding="16dp">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextTextEmailAddressLogin"
+        android:id="@+id/login_layout_email_input_edit_text"
 
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_above="@id/editTextTextPasswordLogin"
+        android:layout_above="@id/login_password_input_edit_layout"
         android:layout_centerHorizontal="true"
         android:ems="10"
         app:boxCornerRadiusTopEnd="5dp"
@@ -27,16 +27,18 @@
         android:inputType="textEmailAddress" >
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextTextEmailAddressLogin"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/rubikregular" />
+        android:fontFamily="@font/rubikregular"
+        android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextTextPasswordLogin"
+        android:id="@+id/login_password_input_edit_layout"
         android:layout_width="match_parent"
         app:boxCornerRadiusTopEnd="5dp"
         app:boxCornerRadiusTopStart="5dp"
@@ -52,9 +54,11 @@
         android:inputType="textPassword"  >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTextPasswordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/rubikregular" />
+            android:fontFamily="@font/rubikregular"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +67,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@id/editTextTextPasswordLogin"
+        android:layout_below="@id/login_password_input_edit_layout"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner"

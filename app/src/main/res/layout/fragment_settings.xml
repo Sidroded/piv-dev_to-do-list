@@ -24,8 +24,7 @@
         android:textSize="16dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-
-        android:id="@+id/edit_text_view_edit_email"
+        android:id="@+id/new_email_text_input_edit_text"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@+id/text_view_edit_email"
@@ -41,9 +40,11 @@
         android:inputType="textEmailAddress"
         android:textSize="16dp" >
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_text_view_edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/rubikregular" />
+        android:fontFamily="@font/rubikregular"
+        android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -51,7 +52,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@+id/edit_text_view_edit_email"
+        android:layout_below="@+id/new_email_text_input_edit_text"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/rubikregular"
@@ -72,8 +73,7 @@
         android:textSize="16dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-
-        android:id="@+id/edit_text_view_edit_password"
+        android:id="@+id/new_password_edit_text_input"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:boxCornerRadiusTopEnd="5dp"
@@ -88,17 +88,19 @@
         android:inputType="textPassword"
         android:textSize="16dp" >
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_text_view_edit_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/rubikregular" />
+        android:fontFamily="@font/rubikregular"
+        android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_text_check_edit_password"
+        android:id="@+id/check_new_password_imput_edit_text"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@+id/edit_text_view_edit_password"
+        android:layout_below="@+id/new_password_edit_text_input"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/rubikregular"
         android:hint="@string/settings_check_password"
@@ -111,9 +113,11 @@
         android:inputType="textPassword"
         android:textSize="16dp" >
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_text_check_edit_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/rubikregular" />
+        android:fontFamily="@font/rubikregular"
+        android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -122,7 +126,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@+id/edit_text_check_edit_password"
+        android:layout_below="@+id/check_new_password_imput_edit_text"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/rubikregular"
