@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -29,6 +32,8 @@ public class AddNoteActivity extends AppCompatActivity {
     FirebaseFirestore db;
     EditText title;
     EditText description;
+    String[] categories = new String[] {"Завдання", "Активність", "Відпочинок", "Зустріч"};
+    String category = "";
 
 
     Calendar dateAndTime = Calendar.getInstance();
@@ -53,6 +58,7 @@ public class AddNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_note);
         title = findViewById(R.id.add_note_name_action_edit_text_view_id);
         description = findViewById(R.id.add_note_description_edit_text_view_id);
@@ -69,13 +75,34 @@ public class AddNoteActivity extends AppCompatActivity {
                 DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
 
 
+
+        Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = (String)parent.getItemAtPosition(position);
+                category = item;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+        spinner.setOnItemSelectedListener(itemSelectedListener);
+
+
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(R.string.add_note_toolbar_title);
 
     }
 
     public void add(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(),"Hui","ebka");
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(),"Hui",category);
         db.collection( MainActivity.getUser().getUser().getUid()).add(addingElement);
         Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
         startActivity(intent);
