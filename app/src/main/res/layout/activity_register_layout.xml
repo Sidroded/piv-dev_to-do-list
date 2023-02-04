@@ -8,33 +8,70 @@
     android:background="@color/background_color"
     android:padding="16dp">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_above="@id/editTextTextPassword"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email_field_reg" />
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
 
-    <EditText
+        android:theme="@style/MyTextInputLayout_overlay"
+        app:boxBackgroundColor="@color/white"
+
+        android:fontFamily="@font/rubikregular"
+        android:hint="@string/email_field_reg"
+        android:inputType="textEmailAddress" >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/rubikregular" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextTextPassword"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_centerInParent="true"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/password_field_reg"/>
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxBackgroundColor="@color/white"
+        android:theme="@style/MyTextInputLayout_overlay"
+
+
+        android:fontFamily="@font/rubikregular"
+        android:hint="@string/password_field_reg"
+        android:inputType="textPassword"  >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubikregular" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
+        android:layout_marginTop="28dp"
         android:id="@+id/register_btn"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+
         android:layout_below="@id/editTextTextPassword"
-        android:layout_centerHorizontal="true"
+
+        android:background="@drawable/rounded_corner"
         android:contentDescription="@string/registration_button"
+        android:fontFamily="@font/rubikregular"
         android:text="@string/registration_button"
-        android:background="@color/items_color"
-        />
+        android:textAllCaps="false"
+        android:textColor="@color/color_accent"
+        android:textSize="20sp" />
+
 </RelativeLayout>
