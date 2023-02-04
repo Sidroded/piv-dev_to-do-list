@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,7 +33,7 @@ import com.sidroded.todolist.note.NoteModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends Fragment  {
    ListView task_list;
 List<NoteModel> dataList=new ArrayList<>();
 
@@ -66,7 +67,7 @@ List<NoteModel> dataList=new ArrayList<>();
                             //Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     });
-            ListViewAdapter adapter=new ListViewAdapter(getActivity(), dataList);
+           ListViewAdapter adapter=new  ListViewAdapter(getActivity(), dataList);
             task_list.setAdapter(adapter);
         }
         return rootView;
