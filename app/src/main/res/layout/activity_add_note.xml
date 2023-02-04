@@ -213,9 +213,9 @@
 
         <Button
 
-            android:letterSpacing="0"
-
             android:id="@+id/add_note_save_note_button"
+
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/add_note_add_file_button_id"
@@ -224,12 +224,12 @@
 
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/rubikregular"
+            android:letterSpacing="0"
+            android:onClick="add"
             android:text="@string/add_node_add_node_button_text"
             android:textAllCaps="false"
             android:textColor="@color/color_accent"
-            android:textSize="16sp"
-            style="?android:attr/borderlessButtonStyle"
-            />
+            android:textSize="16sp" />
 
 
         <TextView
