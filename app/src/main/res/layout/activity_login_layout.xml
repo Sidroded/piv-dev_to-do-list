@@ -7,7 +7,8 @@
     tools:context=".auth.login.LoginLayout"
     android:theme="@style/Theme.ToDoList"
     android:background="@color/background_color"
-    android:padding="16dp">
+    android:paddingTop="16dp"
+    >
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,13 +17,19 @@
         android:layout_marginBottom="40dp"
         app:srcCompat="@drawable/logo" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/all_content_layout"
+        android:layout_below="@id/imageView"
+        android:paddingRight="17dp"
+        android:paddingLeft="17dp">
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_layout_email_input_edit_text"
 
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/imageView"
         android:ems="10"
         app:boxCornerRadiusTopEnd="5dp"
         app:boxCornerRadiusTopStart="5dp"
@@ -105,5 +112,7 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/rubikregular"
         android:text="@string/registration_text" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

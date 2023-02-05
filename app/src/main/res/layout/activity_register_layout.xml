@@ -7,7 +7,7 @@
     tools:context=".auth.register.RegisterLayout"
     android:theme="@style/Theme.ToDoList"
     android:background="@color/background_color"
-    android:padding="16dp">
+    android:paddingTop="16dp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,74 +16,84 @@
         android:layout_marginBottom="40dp"
         app:srcCompat="@drawable/logo" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registr_email_input_edit_layout"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/all_content_layout"
         android:layout_below="@id/imageView"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
+        android:paddingRight="17dp"
+        android:paddingLeft="17dp">
 
-        android:theme="@style/MyTextInputLayout_overlay"
-        app:boxBackgroundColor="@color/white"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registr_email_input_edit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
 
-        android:fontFamily="@font/rubikregular"
-        android:hint="@string/email_field_reg"
-        android:inputType="textEmailAddress" >
+            android:theme="@style/MyTextInputLayout_overlay"
+            app:boxBackgroundColor="@color/white"
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/rubikregular"
-        android:inputType="textEmailAddress"/>
+            android:fontFamily="@font/rubikregular"
+            android:hint="@string/email_field_reg"
+            android:inputType="textEmailAddress" >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTextEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/rubikregular"
+                android:inputType="textEmailAddress"/>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registr_password_input_text_layout"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@id/registr_email_input_edit_layout"
-        android:ems="10"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:boxBackgroundColor="@color/white"
-        android:theme="@style/MyTextInputLayout_overlay"
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        android:fontFamily="@font/rubikregular"
-        android:hint="@string/password_field_reg"
-        android:inputType="textPassword"  >
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registr_password_input_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/registr_email_input_edit_layout"
+            android:ems="10"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
+            app:boxBackgroundColor="@color/white"
+            android:theme="@style/MyTextInputLayout_overlay"
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/rubikregular"
-        android:inputType="textPassword"/>
-    </com.google.android.material.textfield.TextInputLayout>
+
+            android:fontFamily="@font/rubikregular"
+            android:hint="@string/password_field_reg"
+            android:inputType="textPassword"  >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubikregular"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:layout_marginTop="28dp"
-        android:id="@+id/register_btn"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
+        <Button
+            android:layout_marginTop="28dp"
+            android:id="@+id/register_btn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
 
-        android:layout_below="@id/registr_password_input_text_layout"
+            android:layout_below="@id/registr_password_input_text_layout"
 
-        android:background="@drawable/rounded_corner"
-        android:contentDescription="@string/registration_button"
-        android:fontFamily="@font/rubikregular"
-        android:text="@string/registration_button"
-        android:textAllCaps="false"
-        android:textColor="@color/color_accent"
-        android:textSize="20sp" />
+            android:background="@drawable/rounded_corner"
+            android:contentDescription="@string/registration_button"
+            android:fontFamily="@font/rubikregular"
+            android:text="@string/registration_button"
+            android:textAllCaps="false"
+            android:textColor="@color/color_accent"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+
 
 </RelativeLayout>
