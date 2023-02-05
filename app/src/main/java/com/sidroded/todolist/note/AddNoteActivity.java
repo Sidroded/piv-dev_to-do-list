@@ -1,5 +1,7 @@
 package com.sidroded.todolist.note;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -7,16 +9,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.text.format.DateUtils;
-import android.util.Log;
-
 import android.text.Html;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.util.TypedValue;
-
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,15 +30,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
+import com.sidroded.todolist.friends.FriendsFragment;
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 
 public class AddNoteActivity extends AppCompatActivity {
     private static final int FILE_SELECT_CODE = 0;
@@ -56,10 +55,11 @@ public class AddNoteActivity extends AppCompatActivity {
     String category = "";
     FirebaseStorage storage;
     StorageReference storageRef;
-    String filename="";
+    String filename = "";
     Button addFileButton;
     Uri file;
     Uri uri;
+    Spinner friendsSpinner;
     Calendar dateAndTime = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -110,11 +110,11 @@ public class AddNoteActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_add_note);
         storage = FirebaseStorage.getInstance();
-         storageRef = storage.getReference();
+        storageRef = storage.getReference();
         title = findViewById(R.id.add_note_name_action_edit_text_view_id);
         description = findViewById(R.id.add_note_description_edit_text_view_id);
         db = FirebaseFirestore.getInstance();
-        addFileButton=findViewById(R.id.add_note_add_file_button_id);
+        addFileButton = findViewById(R.id.add_note_add_file_button_id);
         addNote = findViewById(R.id.add_note_save_note_button);
         cancel = findViewById(R.id.add_note_cancel_text_view);
         time = findViewById(R.id.add_node_time_view_id);
@@ -126,10 +126,12 @@ public class AddNoteActivity extends AppCompatActivity {
                 dateAndTime.getTimeInMillis(),
                 DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
 
-
+        friendsSpinner = findViewById(R.id.add_node_set_friend_spinner_id);
+        ArrayAdapter<List<String>> friendsSpinnerAdapter = new ArrayAdapter(this,R.layout.friends_spinner_tile,R.id.lolkek, Collections.singletonList(FriendsFragment.getFrindsListData()));
         Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        friendsSpinner.setAdapter(friendsSpinnerAdapter);
         spinner.setAdapter(adapter);
 
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
@@ -158,7 +160,7 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void add(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "Hui", category,filename);
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "Hui", category, filename);
         db.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
         firebaseSave();
         Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
@@ -187,10 +189,9 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void addFile(View v) {
-        if(addFileButton.getText()==filename)
-        {
+        if (addFileButton.getText() == filename) {
             addFileButton.setText(R.string.add_node_add_file_button_text);
-        }else{
+        } else {
             showFileSelector();
         }
 
@@ -217,15 +218,15 @@ public class AddNoteActivity extends AppCompatActivity {
             case FILE_SELECT_CODE:
                 if (resultCode == RESULT_OK) {
                     // Get the Uri of the selected file
-                     uri = data.getData();
+                    uri = data.getData();
                     Log.d("MainActivity", "File Uri: " + uri.toString());
                     // Get the path
-                     path = getPath(this, uri);
+                    path = getPath(this, uri);
                     //File temp=get
                     System.out.println("filename:" + new File(uri.toString()).getName());
-                    filename=new File(uri.toString()).getName();
+                    filename = new File(uri.toString()).getName();
                     addFileButton.setText(filename.toString());
-                    System.out.println("filename:" +filename);
+                    System.out.println("filename:" + filename);
                     //saving in the firebase
                     //firebaseSave();
                     Log.d("MainActivity", "File Path: " + path);
@@ -237,7 +238,7 @@ public class AddNoteActivity extends AppCompatActivity {
 
     private void firebaseSave() {
         StorageReference riversRef = storageRef.child((MainActivity.getUser().getUser().getUid()));
-         file = uri;
+        file = uri;
 
         UploadTask uploadTask = riversRef.putFile(file);
 
