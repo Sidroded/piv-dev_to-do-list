@@ -1,11 +1,14 @@
 package com.sidroded.todolist.note;
 
+import java.util.Collections;
+import java.util.List;
+
 public class NoteModel {
     String tittle;
     String description;
     String date;
     String time;
-    String friend;
+    List<String> friend;
     String category;
 
     public String getFilename() {
@@ -30,7 +33,7 @@ public class NoteModel {
         return time;
     }
 
-    public String getFriend() {
+    public List<String> getFriend() {
         return friend;
     }
 
@@ -47,7 +50,7 @@ public class NoteModel {
         this.description = description;
         this.date = date;
         this.time = time;
-        this.friend = friend;
+        this.friend = Collections.singletonList(friend);
         this.category = category;
         this.filename=filename;
     }

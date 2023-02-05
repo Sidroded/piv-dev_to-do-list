@@ -14,13 +14,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.note.NoteViewActivity;
 
-public class FriendsFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
+public class FriendsFragment extends Fragment {
+ListView frindsList;
+static List<String> frindsListData=new ArrayList<>();
+public static void addFriend(String friend){frindsListData.add(friend);}
     public FriendsFragment() {
         // Required empty public constructor
     }
@@ -34,8 +40,11 @@ public class FriendsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friends, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
+        frindsList=rootView.findViewById(R.id.friends_list_page);
+        FriendsViewAdapter adapter= new FriendsViewAdapter(getActivity(),frindsListData);
+        frindsList.setAdapter(adapter);
+        return rootView;
     }
 
     @Override
@@ -57,8 +66,7 @@ public class FriendsFragment extends Fragment {
         AddFriendDialog addFriendDialog = new AddFriendDialog();
         addFriendDialog.show(getFragmentManager(), "Додати учасника");
     }
-
-    @Override
+@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.bottom_nav_menu, menu);
         menu.clear();

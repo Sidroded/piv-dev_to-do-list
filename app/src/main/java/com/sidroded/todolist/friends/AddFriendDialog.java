@@ -45,7 +45,7 @@ public class AddFriendDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         newFriend = Objects.requireNonNull(friendEmail.getText()).toString();
                         listener.applyText(newFriend);
-
+                       FriendsFragment.addFriend(newFriend);
                     }
                 });
 
