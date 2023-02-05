@@ -2,6 +2,8 @@ package com.sidroded.todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
     CalendarFragment calendarFragment = new CalendarFragment();
     SettingsFragment settingFragment = new SettingsFragment();
     FriendsFragment friendsFragment = new FriendsFragment();
-    //Toolbar toolbar;
+    ActionBar toolbar;
     NavController navCo;
 
 
@@ -47,12 +49,13 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActionBar toolbar = getSupportActionBar();
-        toolbar.setTitle(R.string.calendar_fragment_text);
+        toolbar = getSupportActionBar();
 
-        /*toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.calendar_fragment_text);
-        setSupportActionBar(toolbar);*/
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
+        int titleColor = typedValue.data;
+
+        toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
 
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
@@ -64,17 +67,17 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
             switch (item.getItemId()) {
                 case R.id.calendar_item:
                     navCo.navigate(R.id.calendar);
-                    toolbar.setTitle(R.string.calendar_fragment_text);
+                    toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
 
                     return true;
                 case R.id.friends_item:
                     navCo.navigate(R.id.friends);
-                    toolbar.setTitle(R.string.friends_fragment_tool_text);
+                    toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>Список учасників</font>"));
 
                     return true;
                 case R.id.settings_item:
                     navCo.navigate(R.id.settings);
-                    toolbar.setTitle(R.string.settings_fragment_tool_text);
+                    toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>Налаштування</font>"));
 
                     return true;
 
@@ -119,10 +122,24 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
                 navCo.navigate(R.id.calendarCellsFragment);
                 break;
             case R.id.filter_item_ic:
-                Toast.makeText(this, "Хули тыкашь мразь а?", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.calendar_main_ic:
                 navCo.navigate(R.id.calendar);
+                break;
+            case R.id.category_all_item:
+                Toast.makeText(this, "All", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_meeting_item:
+                Toast.makeText(this, "Meeting", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_activity_item:
+                Toast.makeText(this, "Activity", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_rest_item:
+                Toast.makeText(this, "Rest", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_else_item:
+                Toast.makeText(this, "Else", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
