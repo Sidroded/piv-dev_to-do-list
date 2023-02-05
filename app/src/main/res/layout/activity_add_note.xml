@@ -205,20 +205,20 @@
                 />
 
             <Button
-                android:letterSpacing="0"
                 android:id="@+id/add_note_add_file_button_id"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/add_node_set_category_spinner_id"
                 android:layout_marginBottom="14dp"
                 android:background="@drawable/rounded_corner"
                 android:fontFamily="@font/rubikregular"
+                android:letterSpacing="0"
+                android:onClick="addFile"
                 android:text="@string/add_node_add_file_button_text"
                 android:textAllCaps="false"
                 android:textColor="@color/color_accent"
-                android:textSize="16sp"
-                style="?android:attr/borderlessButtonStyle"
-                />
+                android:textSize="16sp" />
 
             <Button
 

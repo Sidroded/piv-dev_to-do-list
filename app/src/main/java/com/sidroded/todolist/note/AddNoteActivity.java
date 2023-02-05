@@ -2,9 +2,15 @@ package com.sidroded.todolist.note;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,18 +19,25 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.Calendar;
 
 public class AddNoteActivity extends AppCompatActivity {
+    private static final int FILE_SELECT_CODE = 0;
     TextView time;
     TextView date;
     TextView cancel;
@@ -32,10 +45,10 @@ public class AddNoteActivity extends AppCompatActivity {
     FirebaseFirestore db;
     EditText title;
     EditText description;
-    String[] categories = new String[] {"Завдання", "Активність", "Відпочинок", "Зустріч"};
+    String[] categories = new String[]{"Завдання", "Активність", "Відпочинок", "Зустріч"};
     String category = "";
-
-
+    FirebaseStorage storage;
+    StorageReference storageRef;
     Calendar dateAndTime = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -55,11 +68,38 @@ public class AddNoteActivity extends AppCompatActivity {
                 DateUtils.FORMAT_SHOW_TIME));
     };
 
+    public static String getPath(Context context, Uri uri) {
+        String filePath = "";
+        String wholeID = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            wholeID = DocumentsContract.getDocumentId(uri);
+        }
+        // Split at colon, use second item in the array
+        String id = null;
+        if (wholeID != null) {
+            id = wholeID.split(":")[1];
+        }
+        String[] column = {MediaStore.Images.Media.DATA};
+        // where id is equal to
+        String sel = MediaStore.Images.Media._ID + "=?";
+        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                column, sel, new String[]{id}, null);
+        int columnIndex = cursor.getColumnIndex(column[0]);
+        if (cursor.moveToFirst()) {
+            filePath = cursor.getString(columnIndex);
+        }
+        cursor.close();
+
+        return filePath;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_note);
+        storage = FirebaseStorage.getInstance("gs://hackatontest-c9611.appspot.com/");
+         storageRef = storage.getReference();
         title = findViewById(R.id.add_note_name_action_edit_text_view_id);
         description = findViewById(R.id.add_note_description_edit_text_view_id);
         db = FirebaseFirestore.getInstance();
@@ -75,7 +115,6 @@ public class AddNoteActivity extends AppCompatActivity {
                 DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
 
 
-
         Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -85,7 +124,7 @@ public class AddNoteActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String item = (String)parent.getItemAtPosition(position);
+                String item = (String) parent.getItemAtPosition(position);
                 category = item;
             }
 
@@ -102,8 +141,8 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void add(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(),"Hui",category);
-        db.collection( MainActivity.getUser().getUser().getUid()).add(addingElement);
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "Hui", category);
+        db.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
         Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
         startActivity(intent);
     }
@@ -126,6 +165,55 @@ public class AddNoteActivity extends AppCompatActivity {
                 dateAndTime.get(Calendar.MONTH),
                 dateAndTime.get(Calendar.DAY_OF_MONTH))
                 .show();
+
+    }
+
+    public void addFile(View v) {
+        showFileSelector();
+    }
+
+    private void showFileSelector() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        try {
+            startActivityForResult(
+                    Intent.createChooser(intent, "Select a File to Upload"),
+                    FILE_SELECT_CODE);
+        } catch (android.content.ActivityNotFoundException ex) {
+            // Potentially direct the user to the Market with a Dialog
+            Toast.makeText(this, "Please install a File Manager.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case FILE_SELECT_CODE:
+                if (resultCode == RESULT_OK) {
+                    // Get the Uri of the selected file
+                    Uri uri = data.getData();
+                    Log.d("MainActivity", "File Uri: " + uri.toString());
+                    // Get the path
+                    String path = getPath(this, uri);
+                    //saving in the firebase
+                    firebaseSave(uri,path);
+                    Log.d("MainActivity", "File Path: " + path);
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void firebaseSave(Uri uri,String path) {
+        StorageReference riversRef = storageRef.child(path);
+        Uri file = uri;
+        UploadTask uploadTask = riversRef.putFile(file);
+        uploadTask.addOnProgressListener(taskSnapshot -> {
+            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+            System.out.println("Upload is " + progress + "% done");
+        });
 
     }
 
