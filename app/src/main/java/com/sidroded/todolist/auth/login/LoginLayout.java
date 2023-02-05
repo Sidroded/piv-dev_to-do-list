@@ -21,7 +21,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
+import com.sidroded.todolist.auth.passrecovery.Recovery;
 import com.sidroded.todolist.auth.register.RegisterLayout;
+import com.sidroded.todolist.friends.AddFriendDialog;
 
 
 public class LoginLayout extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class LoginLayout extends AppCompatActivity {
     private EditText password_login;
     private Button button_login;
     private TextView text_register;
+    private TextView recovery_text;
     private FirebaseAuth mAuth;
     private ActionBar toolbar;
 
@@ -44,6 +47,7 @@ public class LoginLayout extends AppCompatActivity {
         password_login = findViewById(R.id.editTextTextPasswordLogin);
         button_login = findViewById(R.id.login_btn);
         text_register = findViewById(R.id.textRegister);
+        recovery_text = findViewById(R.id.login_recovery_password_text_view);
 
         toolbar = getSupportActionBar();
         TypedValue typedValue = new TypedValue();
@@ -81,5 +85,17 @@ public class LoginLayout extends AppCompatActivity {
                 }
             }
         });
+
+        recovery_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+    }
+
+    private void openDialog() {
+        Recovery recovery = new Recovery();
+        recovery.show(getSupportFragmentManager(), "Оновити пароль");
     }
 }

@@ -62,6 +62,15 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_recovery_password_text_view"
+        android:text="@string/login_recovery_password_text"
+        android:layout_below="@+id/login_password_input_edit_layout"
+        android:layout_marginBottom="8dp"
+        />
+
     <Button
         android:id="@+id/login_btn"
         style="?android:attr/borderlessButtonStyle"
