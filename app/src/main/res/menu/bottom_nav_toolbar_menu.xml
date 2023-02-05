@@ -7,7 +7,37 @@
         android:icon="@drawable/ic_calendar_filter_menu"
         app:showAsAction="always"
         android:visible="true"
-        />
+        >
+
+        <menu>
+            <item android:id="@+id/category_all_item"
+                android:title="Всі"
+                app:showAsAction="ifRoom"
+                />
+
+            <item android:id="@+id/category_meeting_item"
+                android:title="Зустріч"
+                app:showAsAction="ifRoom"
+                />
+
+            <item android:id="@+id/category_activity_item"
+                android:title="Активність"
+                app:showAsAction="ifRoom"
+                />
+
+            <item android:id="@+id/category_rest_item"
+                android:title="Відпочинок"
+                app:showAsAction="ifRoom"
+                />
+
+            <item android:id="@+id/category_else_item"
+                android:title="Інше"
+                app:showAsAction="ifRoom"
+                />
+
+        </menu>
+
+    </item>
 
     <item android:id="@+id/calendar_item_ic"
         android:title="Календар"
@@ -23,4 +53,5 @@
         app:showAsAction="ifRoom"
         android:visible="false"
         />
+
 </menu>

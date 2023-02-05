@@ -3,11 +3,14 @@ package com.sidroded.todolist.auth.register;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +24,7 @@ public class RegisterLayout extends AppCompatActivity {
     private EditText password_register;
     private Button button_register;
     private FirebaseAuth mAuth;
+    ActionBar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,13 @@ public class RegisterLayout extends AppCompatActivity {
         email_register = findViewById(R.id.editTextTextEmailAddress);
         password_register = findViewById(R.id.editTextTextPassword);
         button_register = findViewById(R.id.register_btn);
+
+        toolbar = getSupportActionBar();
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
+        int titleColor = typedValue.data;
+
+        toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>To Do List</font>"));
 
         button_register.setOnClickListener(v -> {
             if (email_register.getText().toString().isEmpty() || password_register.getText().toString().isEmpty()) {

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.register.RegisterLayout"
+    android:theme="@style/Theme.ToDoList"
     android:background="@color/background_color"
     android:padding="16dp">
 
