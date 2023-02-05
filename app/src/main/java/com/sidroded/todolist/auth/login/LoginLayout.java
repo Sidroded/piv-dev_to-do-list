@@ -54,7 +54,7 @@ public class LoginLayout extends AppCompatActivity {
         getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
         int titleColor = typedValue.data;
 
-        toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>To Do List</font>"));
+        toolbar.hide();
 
         text_register.setOnClickListener(new View.OnClickListener(){
             @Override

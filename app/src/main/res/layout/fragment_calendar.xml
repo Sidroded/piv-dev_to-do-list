@@ -5,7 +5,6 @@
     android:id="@+id/calendar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.ToDoList"
     android:background="@color/background_color"
     tools:context=".calendar.CalendarFragment">
 
@@ -15,8 +14,9 @@
         android:id="@+id/calendarFloatingActionButton"
         android:layout_width="111dp"
         android:layout_height="64dp"
-
         app:borderWidth="0dp"
+
+
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
