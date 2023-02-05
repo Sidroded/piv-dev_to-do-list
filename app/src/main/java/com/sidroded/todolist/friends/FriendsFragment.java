@@ -68,16 +68,19 @@ public class FriendsFragment extends Fragment {
         calendarFOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NoteViewActivity.class);
-                startActivity(intent);
-                //navController.navigate(R.id.action_friends_to_addFriendFragment);
+                openDialog();
             }
         });
+    }
+
+    private void openDialog() {
+        AddFriendDialog addFriendDialog = new AddFriendDialog();
+        addFriendDialog.show(getFragmentManager(), "Додати учвсника");
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.bottom_nav_menu, menu);
-        menu.clear();//например убрать все элементы меню.
+        menu.clear();
     }
 }

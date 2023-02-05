@@ -20,11 +20,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sidroded.todolist.auth.login.LoginLayout;
 import com.sidroded.todolist.calendar.CalendarFragment;
+import com.sidroded.todolist.friends.AddFriendDialog;
 import com.sidroded.todolist.friends.FriendsFragment;
 import com.sidroded.todolist.settings.SettingsFragment;
 import com.sidroded.todolist.user.User;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AddFriendDialog.AddFriendListener {
     public static User user;
 
 
@@ -125,5 +126,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    //Никита тут ты получащь строку друга
+    @Override
+    public void applyText(String friendEmail) {
+
     }
 }
