@@ -38,7 +38,7 @@
     <string name="calendar_fragment_text">Ваші cправи</string>
     <string name="friends_fragment_tool_text">Список учасників</string>
     <string name="settings_fragment_tool_text">Налаштування</string>
-    
+
     <!--NOTE VIEW STRINGS-->
     <string name="note_view_time_text">00:00</string>
     <string name="note_view_date_text">21.12.2000</string>
@@ -54,6 +54,12 @@
     <string name="note_view_delete_button_title_text">Видалити</string>
     <string name="note_view_back_button_title_text">Назад</string>
     <string name="note_view_toolbar_title_text">Перегляд події</string>
-
+    
+    <!--ADD FRIEND DIALOG-->
+    <string name="add_friend_dialog_title_text">Додати нового учасника</string>
+    <string name="add_friend_set_email_text">Введіть email учасника</string>
+    <string name="add_friend_set_email_edit_text">Електронна пошта</string>
+    <string name="add_friend_cancel_text">Скасувати</string>
+    <string name="add_friend_add_friend_text">Додати</string>
 
 </resources>
