@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:scrollbars="vertical"
+    android:theme="@style/Theme.ToDoList"
     android:background="@color/background_color"
     tools:context=".calendar.CalendarCellsFragment">
 

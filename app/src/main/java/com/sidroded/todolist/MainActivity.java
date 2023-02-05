@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
 
 
 
-        
+
         
         toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
 
