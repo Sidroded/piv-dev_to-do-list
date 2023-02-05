@@ -5,6 +5,7 @@
     android:id="@+id/friends"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
     android:background="@color/background_color"
     tools:context=".friends.FriendsFragment">
 

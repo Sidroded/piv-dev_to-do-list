@@ -10,6 +10,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
+    android:theme="@style/Theme.ToDoList"
     android:paddingTop="24dp">
 
     <!-- TODO: Update blank fragment layout -->
