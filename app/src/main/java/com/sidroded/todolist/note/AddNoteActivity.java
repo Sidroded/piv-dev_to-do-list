@@ -4,7 +4,9 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.format.DateUtils;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -97,7 +99,12 @@ public class AddNoteActivity extends AppCompatActivity {
 
 
         ActionBar toolbar = getSupportActionBar();
-        toolbar.setTitle(R.string.add_note_toolbar_title);
+
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
+        int titleColor = typedValue.data;
+
+        toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>Нова подія</font>"));
 
     }
 

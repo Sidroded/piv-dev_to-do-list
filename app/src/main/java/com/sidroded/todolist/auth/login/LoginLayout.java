@@ -3,6 +3,8 @@ package com.sidroded.todolist.auth.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +31,7 @@ public class LoginLayout extends AppCompatActivity {
     private Button button_login;
     private TextView text_register;
     private FirebaseAuth mAuth;
+    private ActionBar toolbar;
 
 
     @Override
@@ -40,6 +44,13 @@ public class LoginLayout extends AppCompatActivity {
         password_login = findViewById(R.id.editTextTextPasswordLogin);
         button_login = findViewById(R.id.login_btn);
         text_register = findViewById(R.id.textRegister);
+
+        toolbar = getSupportActionBar();
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
+        int titleColor = typedValue.data;
+
+        toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>To Do List</font>"));
 
         text_register.setOnClickListener(new View.OnClickListener(){
             @Override
