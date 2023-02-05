@@ -26,14 +26,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#4d4d4d"
             android:textStyle="bold" />
+        <CheckBox
+            android:id="@+id/checkBoxPressed"
+            android:layout_width="0dp"
+            android:layout_height="31dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/checkBoxPressed"
-        android:layout_width="0dp"
-        android:layout_height="31dp"
-        android:layout_weight="1" />
+
 
 
 </LinearLayout>

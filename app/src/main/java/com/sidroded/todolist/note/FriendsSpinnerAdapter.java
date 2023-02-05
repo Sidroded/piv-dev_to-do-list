@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class FriendsSpinnerAdapter extends ArrayAdapter<List<String>> {
-   List<String> friends= new ArrayList<>();
+public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
+   List<String> friends;
    List<Boolean> checked;
     CheckBox checkBox;
     private final Activity context;
     public FriendsSpinnerAdapter(Activity context, List<String> friends) {
-        super(context, R.layout.friends_list_tile, Collections.singletonList(friends));
+        super(context, R.layout.friends_list_tile, friends);
         this.context=context;
         this.friends=friends;
         for (int i =0;i<friends.size();i++)
