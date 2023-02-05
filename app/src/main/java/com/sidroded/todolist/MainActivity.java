@@ -122,10 +122,24 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
                 navCo.navigate(R.id.calendarCellsFragment);
                 break;
             case R.id.filter_item_ic:
-                Toast.makeText(this, "Хули тыкашь мразь а?", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.calendar_main_ic:
                 navCo.navigate(R.id.calendar);
+                break;
+            case R.id.category_all_item:
+                Toast.makeText(this, "All", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_meeting_item:
+                Toast.makeText(this, "Meeting", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_activity_item:
+                Toast.makeText(this, "Activity", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_rest_item:
+                Toast.makeText(this, "Rest", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.category_else_item:
+                Toast.makeText(this, "Else", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
