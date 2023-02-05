@@ -44,11 +44,16 @@ public class AddNoteActivity extends AppCompatActivity {
     Button addNote;
     FirebaseFirestore db;
     EditText title;
+    String path;
     EditText description;
     String[] categories = new String[]{"Завдання", "Активність", "Відпочинок", "Зустріч"};
     String category = "";
     FirebaseStorage storage;
     StorageReference storageRef;
+    String filename="";
+    Button addFileButton;
+    Uri file;
+    Uri uri;
     Calendar dateAndTime = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -98,11 +103,12 @@ public class AddNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_note);
-        storage = FirebaseStorage.getInstance("gs://hackatontest-c9611.appspot.com/");
+        storage = FirebaseStorage.getInstance();
          storageRef = storage.getReference();
         title = findViewById(R.id.add_note_name_action_edit_text_view_id);
         description = findViewById(R.id.add_note_description_edit_text_view_id);
         db = FirebaseFirestore.getInstance();
+        addFileButton=findViewById(R.id.add_note_add_file_button_id);
         addNote = findViewById(R.id.add_note_save_note_button);
         cancel = findViewById(R.id.add_note_cancel_text_view);
         time = findViewById(R.id.add_node_time_view_id);
@@ -141,8 +147,9 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void add(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "Hui", category);
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "Hui", category,filename);
         db.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
+        firebaseSave();
         Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
         startActivity(intent);
     }
@@ -169,6 +176,10 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void addFile(View v) {
+        if(addFileButton.getText()==filename)
+        {
+            addFileButton.setText(R.string.add_node_add_file_button_text);
+        }
         showFileSelector();
     }
 
@@ -193,12 +204,17 @@ public class AddNoteActivity extends AppCompatActivity {
             case FILE_SELECT_CODE:
                 if (resultCode == RESULT_OK) {
                     // Get the Uri of the selected file
-                    Uri uri = data.getData();
+                     uri = data.getData();
                     Log.d("MainActivity", "File Uri: " + uri.toString());
                     // Get the path
-                    String path = getPath(this, uri);
+                     path = getPath(this, uri);
+                    //File temp=get
+                    System.out.println("filename:" +file);
+                    filename=path;
+                    addFileButton.setText(filename.toString());
+                    System.out.println("filename:" +filename);
                     //saving in the firebase
-                    firebaseSave(uri,path);
+                    //firebaseSave();
                     Log.d("MainActivity", "File Path: " + path);
                 }
                 break;
@@ -206,10 +222,13 @@ public class AddNoteActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void firebaseSave(Uri uri,String path) {
-        StorageReference riversRef = storageRef.child(path);
-        Uri file = uri;
+    private void firebaseSave() {
+        StorageReference riversRef = storageRef.child((MainActivity.getUser().getUser().getUid()));
+         file = uri;
+
         UploadTask uploadTask = riversRef.putFile(file);
+
+
         uploadTask.addOnProgressListener(taskSnapshot -> {
             double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
             System.out.println("Upload is " + progress + "% done");
