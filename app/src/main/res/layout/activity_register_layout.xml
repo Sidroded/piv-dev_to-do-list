@@ -7,14 +7,14 @@
     tools:context=".auth.register.RegisterLayout"
     android:theme="@style/Theme.ToDoList"
     android:background="@color/background_color"
-    android:paddingTop="16dp">
+    android:paddingTop="48dp">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="211dp"
         android:layout_height="272dp"
-        android:layout_marginBottom="40dp"
-        app:srcCompat="@drawable/logo" />
+        android:layout_marginBottom="64dp"
+        app:srcCompat="@drawable/logo"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
