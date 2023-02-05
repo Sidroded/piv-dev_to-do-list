@@ -127,10 +127,11 @@ public class AddNoteActivity extends AppCompatActivity {
                 DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
 
         friendsSpinner = findViewById(R.id.add_node_set_friend_spinner_id);
-        ArrayAdapter<String> friendsSpinnerAdapter = new ArrayAdapter(this,R.layout.friends_spinner_tile,R.id.lolkek, FriendsFragment.getFrindsListData());
+        FriendsSpinnerAdapter friendsSpinnerAdapter = new FriendsSpinnerAdapter(this,R.layout.friends_spinner_tile, FriendsFragment.getFrindsListData());
         Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter(AddNoteActivity.this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //friendsSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         friendsSpinner.setAdapter(friendsSpinnerAdapter);
         spinner.setAdapter(adapter);
 
