@@ -9,25 +9,26 @@
     android:background="@color/items_color">
 
     <TextView
+        android:id="@+id/add_friend_title_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_friend_title_text_view"
-        android:text="@string/add_friend_dialog_title_text"
         android:layout_marginBottom="8dp"
-        android:textSize="20sp"
+        android:fontFamily="@font/rubikmedium"
+        android:text="@string/add_friend_dialog_title_text"
         android:textColor="@color/color_accent"
-        />
+        android:textSize="20sp" />
 
     <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/add_friend_set_email_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/add_friend_set_email_text_view"
-        android:text="@string/add_friend_set_email_text"
         android:layout_below="@id/add_friend_title_text_view"
         android:layout_marginBottom="8dp"
-        android:textSize="14sp"
+        android:fontFamily="@font/rubikregular"
+        android:text="@string/add_friend_set_email_text"
         android:textColor="@color/color_accent"
-        />
+        android:textSize="14sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/add_friend_set_email_layout"

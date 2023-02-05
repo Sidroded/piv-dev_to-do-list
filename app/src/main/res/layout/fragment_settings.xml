@@ -138,16 +138,17 @@
 
 
     <Button
-        android:textAllCaps="false"
-        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/settings_log_out_button"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/rubikregular"
         android:text="@string/settings_logout_button"
-        android:textColor="@color/color_accent" />
+        android:textAllCaps="false"
+        android:textColor="@color/color_accent"
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

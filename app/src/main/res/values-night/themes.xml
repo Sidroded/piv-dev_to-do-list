@@ -1,10 +1,48 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ToDoList" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.ToDoList" parent="Theme.MaterialComponents.Light.DarkActionBar" >
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/items_color</item>
         <item name="colorPrimaryDark">@color/items_color</item>
         <item name="colorAccent">@color/color_accent</item>
         <!-- Customize your theme here. -->
+        <item name="floatingActionButtonStyle">@style/FloatingActionButtonStyle</item>
+
     </style>
+    //-----------
+    <style name="MyTextInputLayout_overlay">
+        <item name="colorOnSurface">@color/darkblue</item>
+    </style>
+
+    <style name="FloatingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/FabShapeStyle1</item>
+    </style>
+
+    <style name="FabShapeStyle1" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+
+        <item name="cornerSize">25%</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+    </style>
+
+    <style name="OutlinedRoundedBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/rubikmedium</item>
+    </style>
+    <style name="BottomNavigationInactive">
+        <item name="android:fontFamily">@font/rubikregular</item>
+    </style>
+
+
 </resources>
