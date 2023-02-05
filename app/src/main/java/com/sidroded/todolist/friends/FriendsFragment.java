@@ -35,6 +35,7 @@ public static void addFriend(String friend){frindsListData.add(friend);}
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
