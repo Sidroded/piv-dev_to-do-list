@@ -55,6 +55,7 @@ public class LoginLayout extends AppCompatActivity {
         int titleColor = typedValue.data;
 
         toolbar.hide();
+
         text_register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
