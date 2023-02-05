@@ -8,17 +8,19 @@
     android:theme="@style/Theme.ToDoList"
     android:background="@color/background_color"
     android:padding="16dp">
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="224dp"
-        android:layout_marginBottom="22dp"
+        android:layout_width="211dp"
+        android:layout_height="272dp"
+        android:layout_marginBottom="40dp"
         app:srcCompat="@drawable/logo" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registr_email_input_edit_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_above="@id/registr_password_input_text_layout"
+        android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
         android:ems="10"
         app:boxCornerRadiusTopEnd="5dp"
@@ -46,7 +48,7 @@
         android:id="@+id/registr_password_input_text_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/registr_email_input_edit_layout"
         android:ems="10"
         app:boxCornerRadiusTopEnd="5dp"
         app:boxCornerRadiusTopStart="5dp"
