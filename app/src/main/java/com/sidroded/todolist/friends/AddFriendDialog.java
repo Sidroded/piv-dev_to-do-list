@@ -39,7 +39,7 @@ public class AddFriendDialog extends AppCompatDialogFragment  {
 
                     }
                 })
-                .setPositiveButton("додати", new DialogInterface.OnClickListener() {
+                .setPositiveButton("додати", new DialogInterface.OnClickListener() { //тут инициализация имейла друга
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         newFriend = friendEmail.getText().toString();
