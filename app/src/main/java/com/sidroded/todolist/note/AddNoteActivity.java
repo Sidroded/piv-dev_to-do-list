@@ -179,8 +179,10 @@ public class AddNoteActivity extends AppCompatActivity {
         if(addFileButton.getText()==filename)
         {
             addFileButton.setText(R.string.add_node_add_file_button_text);
+        }else{
+            showFileSelector();
         }
-        showFileSelector();
+
     }
 
     private void showFileSelector() {
@@ -209,8 +211,8 @@ public class AddNoteActivity extends AppCompatActivity {
                     // Get the path
                      path = getPath(this, uri);
                     //File temp=get
-                    System.out.println("filename:" +file);
-                    filename=path;
+                    System.out.println("filename:" + new File(uri.toString()).getName());
+                    filename=new File(uri.toString()).getName();
                     addFileButton.setText(filename.toString());
                     System.out.println("filename:" +filename);
                     //saving in the firebase

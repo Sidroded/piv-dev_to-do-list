@@ -12,11 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.sidroded.todolist.R;
 
-public class AddFriendDialog extends AppCompatDialogFragment  {
+import java.util.Objects;
+
+public class AddFriendDialog extends AppCompatDialogFragment {
     private TextInputEditText friendEmail;
     private String newFriend;
     private AddFriendListener listener;
@@ -42,8 +43,9 @@ public class AddFriendDialog extends AppCompatDialogFragment  {
                 .setPositiveButton("додати", new DialogInterface.OnClickListener() { //тут инициализация имейла друга
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        newFriend = friendEmail.getText().toString();
+                        newFriend = Objects.requireNonNull(friendEmail.getText()).toString();
                         listener.applyText(newFriend);
+
                     }
                 });
 
