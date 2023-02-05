@@ -8,6 +8,9 @@
         <!-- Customize your theme here. -->
         <item name="floatingActionButtonStyle">@style/FloatingActionButtonStyle</item>
 
+
+        <item name="android:windowLightStatusBar">true</item>
+
     </style>
     //-----------
     <style name="MyTextInputLayout_overlay">

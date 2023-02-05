@@ -41,7 +41,7 @@ public class RegisterLayout extends AppCompatActivity {
         getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
         int titleColor = typedValue.data;
 
-        toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>To Do List</font>"));
+        toolbar.hide();
 
         button_register.setOnClickListener(v -> {
             if (email_register.getText().toString().isEmpty() || password_register.getText().toString().isEmpty()) {
