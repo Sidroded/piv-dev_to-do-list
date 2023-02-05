@@ -14,48 +14,37 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.note.NoteViewActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FriendsFragment extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+ListView frindsList;
+static List<String> frindsListData=new ArrayList<>();
+public static void addFriend(String friend){frindsListData.add(friend);}
     public FriendsFragment() {
         // Required empty public constructor
     }
 
-    public static FriendsFragment newInstance(String param1, String param2) {
-        FriendsFragment fragment = new FriendsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friends, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
+        frindsList=rootView.findViewById(R.id.friends_list_page);
+        FriendsViewAdapter adapter= new FriendsViewAdapter(getActivity(),frindsListData);
+        frindsList.setAdapter(adapter);
+        return rootView;
     }
 
     @Override
@@ -75,10 +64,9 @@ public class FriendsFragment extends Fragment {
 
     private void openDialog() {
         AddFriendDialog addFriendDialog = new AddFriendDialog();
-        addFriendDialog.show(getFragmentManager(), "Додати учвсника");
+        addFriendDialog.show(getFragmentManager(), "Додати учасника");
     }
-
-    @Override
+@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.bottom_nav_menu, menu);
         menu.clear();
