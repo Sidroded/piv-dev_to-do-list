@@ -34,6 +34,7 @@ import java.util.List;
 public class CalendarFragment extends Fragment  {
    ListView task_list;
     static FirebaseFirestore db;
+    List<NoteModel> filteredData;
 
     public static FirebaseFirestore getDb() {
         return db;
@@ -66,6 +67,8 @@ public class CalendarFragment extends Fragment  {
         task_list= rootView.findViewById(R.id.task_list);
          db = FirebaseFirestore.getInstance();
 
+         filteredData = new ArrayList<>();
+
         if(MainActivity.getUser()!=null){
             db.collection(MainActivity.getUser().getUser().getUid())
                     .get()
@@ -79,7 +82,14 @@ public class CalendarFragment extends Fragment  {
                                     Log.d("HUI", document.toObject(NoteModel.class).getTittle());
                                 }
                             }
-                            ListViewAdapter adapter = new  ListViewAdapter(getActivity(), dataList, MainActivity.getFilter());
+
+                            for (NoteModel current : dataList) {
+                                if (current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) {
+                                    filteredData.add(current);
+                                }
+                            }
+
+                            ListViewAdapter adapter = new  ListViewAdapter(getActivity(), filteredData, MainActivity.getFilter());
                             task_list.setAdapter(adapter);
                         } else {
                             //Log.d(TAG, "Error getting documents: ", task.getException());
