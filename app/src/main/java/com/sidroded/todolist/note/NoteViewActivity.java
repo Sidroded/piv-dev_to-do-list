@@ -39,7 +39,7 @@ NoteModel item;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_view);
         title=findViewById(R.id.note_view_title_text_view);
-        description=findViewById(R.id.note_view_title_text_view);
+        description=findViewById(R.id.note_view_description_text_view);
         time=  findViewById(R.id.note_view_time_text_view);
         date=findViewById(R.id.note_view_date_text_view);
         backToCalendar=findViewById(R.id.note_view_cancel_text_view);
@@ -50,6 +50,12 @@ NoteModel item;
          firestore = CalendarFragment.getDb();
          position = getIntent().getIntExtra("data",0);
          item= CalendarFragment.getNote(position);
+         title.setText(item.getTittle());
+         description.setText(item.getDescription());
+         time.setText(item.getTime());
+         date.setText(item.getDate());
+         category.setText(item.getCategory());
+
     }
    public void cancel(View v){
         Intent intent = new Intent(NoteViewActivity.this, MainActivity.class);
