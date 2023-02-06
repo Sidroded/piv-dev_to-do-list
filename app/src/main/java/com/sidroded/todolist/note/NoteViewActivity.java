@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
@@ -48,7 +47,7 @@ NoteModel item;
         delete=findViewById(R.id.note_view_delete_button);
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(R.string.note_view_toolbar_title_text);
-         firestore = FirebaseFirestore.getInstance();
+         firestore = CalendarFragment.getDb();
          position = getIntent().getIntExtra("data",0);
          item= CalendarFragment.getNote(position);
     }
@@ -76,10 +75,10 @@ NoteModel item;
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Log.d("Firestore", "Document deleted successfully");
-                                            NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                                                    .findFragmentById(R.id.fragmentContainerView);
-                                            NavController navCo = navHostFragment.getNavController();
-                                            navCo.navigate(R.id.calendar);
+                                            CalendarFragment.updateDataList(position);
+                                            Log.d("kek","deleted");
+                                           Intent intent= new Intent(NoteViewActivity.this,MainActivity.class);
+                                           startActivity(intent);
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {

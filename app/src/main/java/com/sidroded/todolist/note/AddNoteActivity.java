@@ -1,7 +1,5 @@
 package com.sidroded.todolist.note;
 
-import static android.app.PendingIntent.getActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -38,8 +36,6 @@ import com.sidroded.todolist.friends.FriendsFragment;
 
 import java.io.File;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
 
 public class AddNoteActivity extends AppCompatActivity {
     private static final int FILE_SELECT_CODE = 0;
@@ -127,7 +123,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
 
         friendsSpinner = findViewById(R.id.add_node_set_friend_spinner_id);
-        FriendsSpinnerAdapter friendsSpinnerAdapter = new FriendsSpinnerAdapter(this,R.layout.friends_spinner_tile, FriendsFragment.getFrindsListData());
+        FriendsSpinnerAdapter friendsSpinnerAdapter = new FriendsSpinnerAdapter(this, R.layout.friends_spinner_tile, FriendsFragment.getFrindsListData());
         Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
         ArrayAdapter<String> adapter = new ArrayAdapter(AddNoteActivity.this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -238,16 +234,20 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     private void firebaseSave() {
-        StorageReference riversRef = storageRef.child((MainActivity.getUser().getUser().getUid()));
-        file = uri;
 
-        UploadTask uploadTask = riversRef.putFile(file);
+        if (uri != null) {
+            StorageReference riversRef = storageRef.child((MainActivity.getUser().getUser().getUid()));
+            file = uri;
+
+            UploadTask uploadTask = riversRef.putFile(file);
 
 
-        uploadTask.addOnProgressListener(taskSnapshot -> {
-            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-            System.out.println("Upload is " + progress + "% done");
-        });
+            uploadTask.addOnProgressListener(taskSnapshot -> {
+                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                System.out.println("Upload is " + progress + "% done");
+            });
+        }
+
 
     }
 

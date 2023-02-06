@@ -33,7 +33,17 @@ import java.util.List;
 
 public class CalendarFragment extends Fragment  {
    ListView task_list;
-static List<NoteModel> dataList=new ArrayList<>();
+    static FirebaseFirestore db;
+
+    public static FirebaseFirestore getDb() {
+        return db;
+    }
+
+    static List<NoteModel> dataList=new ArrayList<>();
+
+    public static void updateDataList(int i) {
+        dataList.remove(i);
+    }
 
     public CalendarFragment() {
     }
@@ -54,7 +64,7 @@ static List<NoteModel> dataList=new ArrayList<>();
 
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         task_list= rootView.findViewById(R.id.task_list);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+         db = FirebaseFirestore.getInstance();
 
         if(MainActivity.getUser()!=null){
             db.collection(MainActivity.getUser().getUser().getUid())
@@ -63,8 +73,11 @@ static List<NoteModel> dataList=new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
-                                dataList.add(document.toObject(NoteModel.class));
-                                Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                                if(dataList.size()!=task.getResult().size())
+                                {
+                                    dataList.add(document.toObject(NoteModel.class));
+                                    Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                                }
                             }
                             ListViewAdapter adapter=new  ListViewAdapter(getActivity(), dataList);
                             task_list.setAdapter(adapter);
