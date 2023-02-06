@@ -2,19 +2,31 @@ package com.sidroded.todolist.calendar;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
+import com.sidroded.todolist.note.NoteModel;
+import com.sidroded.todolist.note.NoteViewActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CalendarCellsFragment extends Fragment {
 
@@ -23,6 +35,15 @@ public class CalendarCellsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     CalendarView calendarView;
     TextView dateDisplay;
+    ListView task_list;
+    static FirebaseFirestore db;
+    List<NoteModel> filteredData;
+
+    public static FirebaseFirestore getDb() {
+        return db;
+    }
+
+    static List<NoteModel> dataList=new ArrayList<>();
 
     private String mParam1;
     private String mParam2;
@@ -53,12 +74,12 @@ public class CalendarCellsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_calendar_cells, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_calendar_cells, container, false);
 
 
 
-        calendarView = view.findViewById(R.id.calendarView);
-        dateDisplay = view.findViewById(R.id.date_display);
+        calendarView = rootView.findViewById(R.id.calendarView);
+        dateDisplay = rootView.findViewById(R.id.date_display);
         dateDisplay.setText("Date: ");
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -69,7 +90,49 @@ public class CalendarCellsFragment extends Fragment {
             }
         });
 
-        return view;
+        task_list= rootView.findViewById(R.id.task_list_cells);
+        db = FirebaseFirestore.getInstance();
+
+        filteredData = new ArrayList<>();
+
+        if(MainActivity.getUser()!=null){
+            db.collection(MainActivity.getUser().getUser().getUid())
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
+                                if(dataList.size()!=task.getResult().size())
+                                {
+                                    dataList.add(document.toObject(NoteModel.class));
+                                    Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                                }
+                            }
+
+                            for (NoteModel current : dataList) {
+                                if (current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) {
+                                    filteredData.add(current);
+                                }
+                            }
+
+                            ListViewAdapter adapter = new  ListViewAdapter(getActivity(), filteredData, MainActivity.getFilter());
+                            task_list.setAdapter(adapter);
+                        } else {
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    });
+
+        }
+        task_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getContext(), NoteViewActivity.class);
+                intent.putExtra("data",i);
+                startActivity(intent);
+            }
+        });
+
+        return rootView;
     }
 
     @Override
