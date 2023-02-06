@@ -6,18 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.sidroded.todolist.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
-   LayoutInflater mInflater;
+    LayoutInflater mInflater;
     Context mContext;
-     List<String> friends;
-     int mResource;
+    List<String> friends;
+    List<Boolean> checked=new ArrayList<>();
+    int mResource;
 
     public FriendsSpinnerAdapter(Context context, int resource, List<String> friends) {
         super(context, resource, friends);
@@ -25,6 +27,7 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
         mInflater = LayoutInflater.from(context);
         mResource = resource;
         this.friends = friends;
+
     }
 
     @Override
@@ -46,6 +49,19 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
 
         String item = friends.get(position);
         spinnerItemTitle.setText(item);
+        spinnerItemCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(checked.size()==position+1){
+                    checked.set(position, b);
+                }else{
+                    checked.add(position, b);
+                }
+
+            }
+        });
+
         return view;
+
     }
 }
