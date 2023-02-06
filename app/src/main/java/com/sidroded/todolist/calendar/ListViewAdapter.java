@@ -17,6 +17,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ListViewAdapter extends ArrayAdapter<NoteModel> {
 
@@ -37,9 +38,9 @@ public class ListViewAdapter extends ArrayAdapter<NoteModel> {
         View listItem = view;
         if(listItem == null)
             listItem = LayoutInflater.from(context).inflate(R.layout.list_tile,parent,false);
-
         filterList();
-        if(filteredData.size()>=position){NoteModel currentNote = filteredData.get(position);
+        if((dataList.get(position).getCategory().equals(filter) || filter.equals("Всі"))){
+            NoteModel currentNote = filteredData.get(position);
 
 
             TextView titleText = (TextView) listItem.findViewById(R.id.title);
@@ -51,12 +52,11 @@ public class ListViewAdapter extends ArrayAdapter<NoteModel> {
         }else {
             listItem.setVisibility(View.INVISIBLE);
         }
-
-
         return listItem;
     }
 
     private void filterList() {
+
         for (NoteModel current : dataList) {
             if (current.getCategory().equals(filter) || filter.equals("Всі")) {
                 filteredData.add(current);
