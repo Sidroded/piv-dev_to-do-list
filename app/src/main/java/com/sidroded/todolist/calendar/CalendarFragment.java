@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,17 +26,31 @@ import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.note.AddNoteActivity;
 import com.sidroded.todolist.note.NoteModel;
+import com.sidroded.todolist.note.NoteViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarFragment extends Fragment  {
    ListView task_list;
-List<NoteModel> dataList=new ArrayList<>();
+    static FirebaseFirestore db;
+
+    public static FirebaseFirestore getDb() {
+        return db;
+    }
+
+    static List<NoteModel> dataList=new ArrayList<>();
+
+    public static void updateDataList(int i) {
+        dataList.remove(i);
+    }
 
     public CalendarFragment() {
     }
 
+    public static NoteModel getNote(int position) {
+        return dataList.get(position);
+    }
 
 
     @Override
@@ -49,7 +64,7 @@ List<NoteModel> dataList=new ArrayList<>();
 
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         task_list= rootView.findViewById(R.id.task_list);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+         db = FirebaseFirestore.getInstance();
 
         if(MainActivity.getUser()!=null){
             db.collection(MainActivity.getUser().getUser().getUid())
@@ -58,8 +73,11 @@ List<NoteModel> dataList=new ArrayList<>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
-                                dataList.add(document.toObject(NoteModel.class));
-                                Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                                if(dataList.size()!=task.getResult().size())
+                                {
+                                    dataList.add(document.toObject(NoteModel.class));
+                                    Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                                }
                             }
                             ListViewAdapter adapter=new  ListViewAdapter(getActivity(), dataList);
                             task_list.setAdapter(adapter);
@@ -69,6 +87,14 @@ List<NoteModel> dataList=new ArrayList<>();
                     });
 
         }
+        task_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getContext(), NoteViewActivity.class);
+                intent.putExtra("data",i);
+                startActivity(intent);
+            }
+        });
         return rootView;
 
     }

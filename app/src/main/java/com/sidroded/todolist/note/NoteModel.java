@@ -3,7 +3,8 @@ package com.sidroded.todolist.note;
 import java.util.Collections;
 import java.util.List;
 
-public class NoteModel {
+public class
+NoteModel {
     String tittle;
     String description;
     String date;

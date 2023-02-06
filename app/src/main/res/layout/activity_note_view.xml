@@ -143,20 +143,21 @@
 
 
                 <Button
-                    android:layout_marginBottom="3dp"
-                    android:textSize="16sp"
-                    android:textAllCaps="false"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:textColor="@color/color_accent"
-                    android:fontFamily="@font/rubikregular"
-                    android:letterSpacing="0"
-
-                    android:background="@drawable/rounded_corner"
                     android:id="@+id/note_view_delete_button"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/note_view_edit_button"
-                    android:text="@string/note_view_delete_button_title_text" />
+                    android:layout_marginBottom="3dp"
+                    android:background="@drawable/rounded_corner"
+
+                    android:fontFamily="@font/rubikregular"
+                    android:letterSpacing="0"
+                    android:onClick="deleteFromFirebase"
+                    android:text="@string/note_view_delete_button_title_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_accent"
+                    android:textSize="16sp" />
 
                 <TextView
 
@@ -165,6 +166,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/note_view_delete_button"
                     android:layout_centerHorizontal="true"
+                    android:onClick="cancel"
                     android:text="@string/note_view_back_button_title_text" />
 
 
