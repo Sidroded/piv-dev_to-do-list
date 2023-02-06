@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.sidroded.todolist.EditNoteActivity;
 import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.calendar.CalendarFragment;
@@ -30,7 +31,7 @@ public class NoteViewActivity extends AppCompatActivity {
     TextView backToCalendar;
     TextView category;
     Button delete;
-
+    Button editNote;
     FirebaseFirestore firestore;
     int position;
 NoteModel item;
@@ -45,6 +46,8 @@ NoteModel item;
         backToCalendar=findViewById(R.id.note_view_cancel_text_view);
         category=findViewById(R.id.note_view_category_list_text_view);
         delete=findViewById(R.id.note_view_delete_button);
+        editNote=findViewById(R.id.note_view_edit_button);
+
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(R.string.note_view_toolbar_title_text);
          firestore = CalendarFragment.getDb();
@@ -63,6 +66,7 @@ NoteModel item;
     }
 
     public void deleteFromFirebase(View v){
+
         firestore.collection(MainActivity.getUser().getUser().getUid())
                 .whereEqualTo("time", item.getTime())
                 .get()
@@ -107,9 +111,12 @@ NoteModel item;
 
 
     }
+    public void editNote(View v){
+        Intent intent= new Intent(NoteViewActivity.this, EditNoteActivity.class);
+        intent.putExtra("data",position);
+        startActivity(intent);
 
-
-
+    }
 
 
 
