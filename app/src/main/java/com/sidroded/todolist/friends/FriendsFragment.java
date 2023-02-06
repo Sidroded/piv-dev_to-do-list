@@ -26,7 +26,12 @@ import java.util.List;
 public class FriendsFragment extends Fragment {
 ListView frindsList;
 static List<String> frindsListData=new ArrayList<>();
-public static void addFriend(String friend){frindsListData.add(friend);}
+
+    public static List<String> getFrindsListData() {
+        return frindsListData;
+    }
+
+    public static void addFriend(String friend){frindsListData.add(friend);}
     public FriendsFragment() {
         // Required empty public constructor
     }
