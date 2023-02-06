@@ -29,7 +29,7 @@ import com.sidroded.todolist.user.User;
 
 public class MainActivity extends AppCompatActivity implements AddFriendDialog.AddFriendListener {
     public static User user;
-
+    public static String filter = "Всі";
 
 
     BottomNavigationView bottomNavigationView;
@@ -96,6 +96,10 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
         return user;
     }
 
+    public static String getFilter() {
+        return filter;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -132,19 +136,19 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
                 navCo.navigate(R.id.calendar);
                 break;
             case R.id.category_all_item:
-                Toast.makeText(this, "All", Toast.LENGTH_SHORT).show();
+                filter = "Всі";
                 break;
             case R.id.category_meeting_item:
-                Toast.makeText(this, "Meeting", Toast.LENGTH_SHORT).show();
+                filter = "Зустріч";
                 break;
             case R.id.category_activity_item:
-                Toast.makeText(this, "Activity", Toast.LENGTH_SHORT).show();
+                filter = "Активність";
                 break;
             case R.id.category_rest_item:
-                Toast.makeText(this, "Rest", Toast.LENGTH_SHORT).show();
+                filter = "Відпочинок";
                 break;
             case R.id.category_else_item:
-                Toast.makeText(this, "Else", Toast.LENGTH_SHORT).show();
+                filter = "Інше";
                 break;
         }
         return super.onOptionsItemSelected(item);
