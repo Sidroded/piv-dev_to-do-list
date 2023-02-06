@@ -8,17 +8,19 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sidroded.todolist.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
     LayoutInflater mInflater;
     Context mContext;
     List<String> friends;
-    List<Boolean> checked=new ArrayList<>();
+    HashMap<Integer, Boolean> checked = new HashMap<>();
     int mResource;
 
     public FriendsSpinnerAdapter(Context context, int resource, List<String> friends) {
@@ -49,15 +51,21 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
 
         String item = friends.get(position);
         spinnerItemTitle.setText(item);
+
+        if (Boolean.TRUE.equals(checked.get(position))) {
+           spinnerItemCheckbox.setChecked(Boolean.TRUE.equals(checked.get(position)));
+        }
+
         spinnerItemCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(checked.size()==position+1){
-                    checked.set(position, b);
-                }else{
-                    checked.add(position, b);
+                if (spinnerItemCheckbox.isChecked()) {
+                    Toast.makeText(mContext, "On " + position, Toast.LENGTH_SHORT).show();
+                    checked.put(position, true);
+                } else {
+                    Toast.makeText(mContext, "Off" + position, Toast.LENGTH_SHORT).show();
+                    checked.put(position, false);
                 }
-
             }
         });
 
