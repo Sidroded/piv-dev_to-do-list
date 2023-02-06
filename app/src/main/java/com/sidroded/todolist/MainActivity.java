@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
         TypedValue typedValue = new TypedValue();
         getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
         titleColor = typedValue.data;
-        
+
         toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
 
 
