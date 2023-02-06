@@ -79,7 +79,7 @@ public class CalendarFragment extends Fragment  {
                                     Log.d("HUI", document.toObject(NoteModel.class).getTittle());
                                 }
                             }
-                            ListViewAdapter adapter=new  ListViewAdapter(getActivity(), dataList);
+                            ListViewAdapter adapter = new  ListViewAdapter(getActivity(), dataList, MainActivity.getFilter());
                             task_list.setAdapter(adapter);
                         } else {
                             //Log.d(TAG, "Error getting documents: ", task.getException());

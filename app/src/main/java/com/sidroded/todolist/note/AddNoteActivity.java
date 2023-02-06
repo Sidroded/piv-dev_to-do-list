@@ -49,7 +49,7 @@ public class AddNoteActivity extends AppCompatActivity {
     EditText title;
     String path;
     EditText description;
-    String[] categories = new String[]{"Завдання", "Активність", "Відпочинок", "Зустріч"};
+    String[] categories = new String[]{"Інше", "Активність", "Відпочинок", "Зустріч"};
     String category = "";
     FirebaseStorage storage;
     StorageReference storageRef;
