@@ -6,18 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sidroded.todolist.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
-   LayoutInflater mInflater;
+    LayoutInflater mInflater;
     Context mContext;
-     List<String> friends;
-     int mResource;
+    List<String> friends;
+    HashMap<Integer, Boolean> checked = new HashMap<>();
+    int mResource;
 
     public FriendsSpinnerAdapter(Context context, int resource, List<String> friends) {
         super(context, resource, friends);
@@ -25,6 +29,7 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
         mInflater = LayoutInflater.from(context);
         mResource = resource;
         this.friends = friends;
+
     }
 
     @Override
@@ -46,6 +51,25 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
 
         String item = friends.get(position);
         spinnerItemTitle.setText(item);
+
+        if (Boolean.TRUE.equals(checked.get(position))) {
+           spinnerItemCheckbox.setChecked(Boolean.TRUE.equals(checked.get(position)));
+        }
+
+        spinnerItemCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (spinnerItemCheckbox.isChecked()) {
+                    Toast.makeText(mContext, "On " + position, Toast.LENGTH_SHORT).show();
+                    checked.put(position, true);
+                } else {
+                    Toast.makeText(mContext, "Off" + position, Toast.LENGTH_SHORT).show();
+                    checked.put(position, false);
+                }
+            }
+        });
+
         return view;
+
     }
 }

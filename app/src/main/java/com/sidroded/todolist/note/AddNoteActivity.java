@@ -37,12 +37,14 @@ import com.sidroded.todolist.R;
 import com.sidroded.todolist.friends.FriendsFragment;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
 public class AddNoteActivity extends AppCompatActivity {
     private static final int FILE_SELECT_CODE = 0;
+
     TextView time;
     TextView date;
     TextView cancel;
