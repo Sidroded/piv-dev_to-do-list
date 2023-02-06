@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,17 +26,21 @@ import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.note.AddNoteActivity;
 import com.sidroded.todolist.note.NoteModel;
+import com.sidroded.todolist.note.NoteViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarFragment extends Fragment  {
    ListView task_list;
-List<NoteModel> dataList=new ArrayList<>();
+static List<NoteModel> dataList=new ArrayList<>();
 
     public CalendarFragment() {
     }
 
+    public static NoteModel getNote(int position) {
+        return dataList.get(position);
+    }
 
 
     @Override
@@ -69,6 +74,14 @@ List<NoteModel> dataList=new ArrayList<>();
                     });
 
         }
+        task_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getContext(), NoteViewActivity.class);
+                intent.putExtra("data",i);
+                startActivity(intent);
+            }
+        });
         return rootView;
 
     }
