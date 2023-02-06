@@ -39,14 +39,18 @@ public class ListViewAdapter extends ArrayAdapter<NoteModel> {
             listItem = LayoutInflater.from(context).inflate(R.layout.list_tile,parent,false);
 
         filterList();
-        NoteModel currentNote = filteredData.get(position);
+        if(filteredData.size()>position){NoteModel currentNote = filteredData.get(position);
 
 
-        TextView titleText = (TextView) listItem.findViewById(R.id.title);
-        TextView subtitleText = (TextView) listItem.findViewById(R.id.subtitle);
+            TextView titleText = (TextView) listItem.findViewById(R.id.title);
+            TextView subtitleText = (TextView) listItem.findViewById(R.id.subtitle);
 
-        titleText.setText(currentNote.getTittle());
-        subtitleText.setText(currentNote.getDescription());
+            titleText.setText(currentNote.getTittle());
+            subtitleText.setText(currentNote.getDescription());
+
+        }else {
+            listItem.setVisibility(View.INVISIBLE);
+        }
 
 
         return listItem;
