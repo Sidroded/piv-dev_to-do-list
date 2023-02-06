@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
     FriendsFragment friendsFragment = new FriendsFragment();
     ActionBar toolbar;
     NavController navCo;
+    int titleColor;
 
 
 
@@ -53,12 +54,7 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
 
         TypedValue typedValue = new TypedValue();
         getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
-        int titleColor = typedValue.data;
-
-
-
-
-
+        titleColor = typedValue.data;
         
         toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
 
@@ -137,18 +133,28 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
                 break;
             case R.id.category_all_item:
                 filter = "Всі";
+                navCo.navigate(R.id.calendar);
+                toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
                 break;
             case R.id.category_meeting_item:
                 filter = "Зустріч";
+                navCo.navigate(R.id.calendar);
+                toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
                 break;
             case R.id.category_activity_item:
                 filter = "Активність";
+                navCo.navigate(R.id.calendar);
+                toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
                 break;
             case R.id.category_rest_item:
                 filter = "Відпочинок";
+                navCo.navigate(R.id.calendar);
+                toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
                 break;
             case R.id.category_else_item:
                 filter = "Інше";
+                navCo.navigate(R.id.calendar);
+                toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
                 break;
         }
         return super.onOptionsItemSelected(item);
