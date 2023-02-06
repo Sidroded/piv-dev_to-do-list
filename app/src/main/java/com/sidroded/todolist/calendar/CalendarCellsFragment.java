@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,6 +48,7 @@ public class CalendarCellsFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+    private String date;
 
     public CalendarCellsFragment() {
         // Required empty public constructor
@@ -85,7 +87,17 @@ public class CalendarCellsFragment extends Fragment {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int i, int i1, int i2) {
-                dateDisplay.setText("Date: " + i2 + " / " + i1 + " / " + i);
+                int month = i1 + 1;
+                String day = String.valueOf(i2);
+                if (day.length() == 1) {
+                    day = "0" + day;
+                }
+                String monthStr = String.valueOf(month);
+                if (monthStr.length() == 1) {
+                    monthStr = "0" + monthStr;
+                }
+                date = day + "." + monthStr + "." + i;
+                dateDisplay.setText("Date: " + date);
 
             }
         });
@@ -110,7 +122,7 @@ public class CalendarCellsFragment extends Fragment {
                             }
 
                             for (NoteModel current : dataList) {
-                                if (current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) {
+                                if ((current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) && current.getDate().equals(date)) {
                                     filteredData.add(current);
                                 }
                             }
