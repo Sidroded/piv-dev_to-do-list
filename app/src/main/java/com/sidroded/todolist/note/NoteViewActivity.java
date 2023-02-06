@@ -8,9 +8,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -51,12 +49,8 @@ NoteModel item;
         editNote=findViewById(R.id.note_view_edit_button);
 
         ActionBar toolbar = getSupportActionBar();
-        TypedValue typedValue = new TypedValue();
-        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
-        int titleColor = typedValue.data;
-        toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Перегляд події</font></b>"));
-
-        firestore = CalendarFragment.getDb();
+        toolbar.setTitle(R.string.note_view_toolbar_title_text);
+         firestore = CalendarFragment.getDb();
          position = getIntent().getIntExtra("data",0);
          item= CalendarFragment.getNote(position);
          title.setText(item.getTittle());
