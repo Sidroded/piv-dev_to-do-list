@@ -37,7 +37,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sidroded.todolist.calendar.CalendarFragment;
+import com.sidroded.todolist.friends.FriendsFragment;
 import com.sidroded.todolist.note.AddNoteActivity;
+import com.sidroded.todolist.note.FriendsSpinnerAdapter;
 import com.sidroded.todolist.note.NoteModel;
 
 import java.io.File;
@@ -61,6 +63,8 @@ public class EditNoteActivity extends AppCompatActivity {
     TextView time;
     TextView date;
     Button addFileButton;
+    FriendsSpinnerAdapter friendsSpinnerAdapter;
+    Spinner friendsSpinner;
     Calendar dateAndTime = Calendar.getInstance();
     FirebaseStorage storage;
     int titleColor;
@@ -127,7 +131,8 @@ public class EditNoteActivity extends AppCompatActivity {
         description.setText(item.getDescription());
         date.setText(item.getDate());
         time.setText(item.getTime());
-
+        friendsSpinner = findViewById(R.id.add_node_set_friend_spinner_id);
+        friendsSpinnerAdapter = new FriendsSpinnerAdapter(this, R.layout.friends_spinner_tile, FriendsFragment.getFrindsListData());
         Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
         ArrayAdapter<String> adapter = new ArrayAdapter(EditNoteActivity.this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -170,7 +175,8 @@ public class EditNoteActivity extends AppCompatActivity {
 
         new TimePickerDialog(EditNoteActivity.this, t,
                 dateAndTime.get(Calendar.HOUR_OF_DAY),
-                dateAndTime.get(Calendar.MINUTE), true)
+                dateAndTime.get(Calendar.MINUTE),
+                true)
                 .show();
     }
 
@@ -179,6 +185,9 @@ public class EditNoteActivity extends AppCompatActivity {
     }
 
     public void addEdit(View v) {
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "",category, filename);
+        firestore.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
+        firebaseSave();
         firestore.collection(MainActivity.getUser().getUser().getUid())
                 .whereEqualTo("time", item.getTime())
                 .get()
@@ -218,10 +227,6 @@ public class EditNoteActivity extends AppCompatActivity {
                         Log.e("Firestore", "Error retrieving document", e);
                     }
                 });
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "",category, filename);
-        firestore.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
-        firebaseSave();
-
 
 
     }
