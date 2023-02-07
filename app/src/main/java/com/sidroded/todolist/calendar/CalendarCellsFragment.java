@@ -97,6 +97,7 @@ public class CalendarCellsFragment extends Fragment {
 
         task_list = rootView.findViewById(R.id.task_list_cells);
         db = FirebaseFirestore.getInstance();
+        dataList.clear();
 
         filteredData = new ArrayList<>();
 
