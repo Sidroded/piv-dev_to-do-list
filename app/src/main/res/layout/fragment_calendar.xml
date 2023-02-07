@@ -40,6 +40,18 @@
         android:layout_alignParentTop="true"
         android:dividerHeight="10dp"
         android:divider="@color/background_color"
-        />
+        >
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/calendar_info_missing_notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text=""
+        android:textColor="@color/color_accent"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>
