@@ -167,6 +167,7 @@
                 android:textColor="@color/color_accent"
                 android:fontFamily="@font/rubikregular"
                 android:letterSpacing="0"
+                android:onClick="deleteFromFirebase"
 
                 android:background="@drawable/rounded_corner"
                 android:id="@+id/note_view_delete_button"
