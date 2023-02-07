@@ -35,6 +35,8 @@ public class CalendarFragment extends Fragment  {
    ListView task_list;
     static FirebaseFirestore db;
     List<NoteModel> filteredData;
+    String title1 = "";
+    String title2 = "";
 
     public static FirebaseFirestore getDb() {
         return db;
@@ -69,6 +71,8 @@ public class CalendarFragment extends Fragment  {
 
          filteredData = new ArrayList<>();
 
+         dataList.clear();
+
         if(MainActivity.getUser()!=null){
             db.collection(MainActivity.getUser().getUser().getUid())
                     .get()
@@ -76,16 +80,18 @@ public class CalendarFragment extends Fragment  {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
-                                if(dataList.size()!=task.getResult().size())
+                                if(dataList.size() != task.getResult().size())
                                 {
                                     dataList.add(document.toObject(NoteModel.class));
                                     Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                                    String title1 = document.toObject(NoteModel.class).getTittle().toString();
                                 }
                             }
 
                             for (NoteModel current : dataList) {
                                 if (current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) {
                                     filteredData.add(current);
+                                     title2 = current.getTittle().toString();
                                 }
                             }
 
