@@ -67,21 +67,9 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
                 if (spinnerItemCheckbox.isChecked()) {
                     checked.put(position, true);
                     checkedFriends.add(spinnerItemTitle.getText().toString());
-
-                    String result = "";
-                    for (String str : checkedFriends) {
-                        result = result + str + "\n";
-                    }
-                    Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
                 } else {
                     checked.put(position, false);
                     checkedFriends.remove(spinnerItemTitle.getText().toString());
-
-                    String result = "";
-                    for (String str : checkedFriends) {
-                        result = result + str + "\n";
-                    }
-                    Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
                 }
             }
         });
