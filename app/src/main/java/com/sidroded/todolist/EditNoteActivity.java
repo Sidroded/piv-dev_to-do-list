@@ -179,9 +179,6 @@ public class EditNoteActivity extends AppCompatActivity {
     }
 
     public void addEdit(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "",category, filename);
-        firestore.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
-        firebaseSave();
         firestore.collection(MainActivity.getUser().getUser().getUid())
                 .whereEqualTo("time", item.getTime())
                 .get()
@@ -221,6 +218,10 @@ public class EditNoteActivity extends AppCompatActivity {
                         Log.e("Firestore", "Error retrieving document", e);
                     }
                 });
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "",category, filename);
+        firestore.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
+        firebaseSave();
+
 
 
     }
