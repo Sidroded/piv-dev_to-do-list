@@ -1,7 +1,14 @@
 package com.sidroded.todolist.friends;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,33 +16,41 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.errorprone.annotations.Keep;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
+import com.sidroded.todolist.calendar.ListViewAdapter;
+import com.sidroded.todolist.note.NoteModel;
 import com.sidroded.todolist.note.NoteViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FriendsFragment extends Fragment {
-ListView frindsList;
-static List<String> frindsListData=new ArrayList<>();
+    static FirebaseFirestore db;
+
+    public static FirebaseFirestore getDb() {
+        return db;
+    }
+
+    static List<String> frindsListData = new ArrayList<>();
+    ListView frindsList;
+
+    public FriendsFragment() {
+        // Required empty public constructor
+    }
 
     public static List<String> getFrindsListData() {
         return frindsListData;
     }
 
-    public static void addFriend(String friend){frindsListData.add(friend);}
-    public FriendsFragment() {
-        // Required empty public constructor
+    public static void addFriend(String friend) {
+        frindsListData.add(friend);
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,9 +62,8 @@ static List<String> frindsListData=new ArrayList<>();
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
-        frindsList=rootView.findViewById(R.id.friends_list_page);
-        FriendsViewAdapter adapter= new FriendsViewAdapter(getActivity(),frindsListData);
-        frindsList.setAdapter(adapter);
+        frindsList = rootView.findViewById(R.id.friends_list_page);
+
         return rootView;
     }
 
@@ -66,13 +80,40 @@ static List<String> frindsListData=new ArrayList<>();
                 openDialog();
             }
         });
+        db = FirebaseFirestore.getInstance();
+        frindsListData.clear();
+        if (MainActivity.getUser() != null) {
+            db.collection("friends"+MainActivity.getUser().getUser().getUid().toString())
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                if(frindsListData.size()!=task.getResult().size())
+                                {
+                                    Lol lol= document.toObject(Lol.class);
+                                    frindsListData.add(lol.getFriend());
+                                }
+
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                            FriendsViewAdapter adapter = new FriendsViewAdapter(getActivity(), frindsListData);
+                            frindsList.setAdapter(adapter);
+
+                        } else {
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    });
+
+        }
     }
 
     private void openDialog() {
         AddFriendDialog addFriendDialog = new AddFriendDialog();
         addFriendDialog.show(getFragmentManager(), "Додати учасника");
     }
-@Override
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.bottom_nav_menu, menu);
         menu.clear();
