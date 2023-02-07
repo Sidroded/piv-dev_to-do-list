@@ -20,6 +20,7 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
     LayoutInflater mInflater;
     Context mContext;
     List<String> friends;
+    List<String> checkedFriends = new ArrayList<>();
     HashMap<Integer, Boolean> checked = new HashMap<>();
     int mResource;
 
@@ -60,11 +61,23 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (spinnerItemCheckbox.isChecked()) {
-                    Toast.makeText(mContext, "On " + position, Toast.LENGTH_SHORT).show();
                     checked.put(position, true);
+                    checkedFriends.add(spinnerItemTitle.getText().toString());
+
+                    String result = "";
+                    for (String str : checkedFriends) {
+                        result = result + str + "\n";
+                    }
+                    Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(mContext, "Off" + position, Toast.LENGTH_SHORT).show();
                     checked.put(position, false);
+                    checkedFriends.remove(spinnerItemTitle.getText().toString());
+
+                    String result = "";
+                    for (String str : checkedFriends) {
+                        result = result + str + "\n";
+                    }
+                    Toast.makeText(mContext, result, Toast.LENGTH_SHORT).show();
                 }
             }
         });
