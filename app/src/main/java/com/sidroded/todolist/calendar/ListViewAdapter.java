@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.note.NoteModel;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +42,12 @@ public class ListViewAdapter extends ArrayAdapter<NoteModel> implements Filterab
 
             TextView titleText = (TextView) listItem.findViewById(R.id.title);
             TextView subtitleText = (TextView) listItem.findViewById(R.id.subtitle);
+            TextView time=(TextView) listItem.findViewById(R.id.time);
+        TextView date=(TextView) listItem.findViewById(R.id.date);
 
-            titleText.setText(currentNote.getTittle());
+        time.setText(currentNote.getTime());
+        date.setText(currentNote.getDate());
+        titleText.setText(currentNote.getTittle());
             subtitleText.setText(currentNote.getDescription());
 
 
