@@ -20,7 +20,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.sidroded.todolist.EditNoteActivity;
 import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.calendar.CalendarFragment;
@@ -33,7 +32,7 @@ public class NoteViewActivity extends AppCompatActivity {
     TextView backToCalendar;
     TextView category;
     Button delete;
-    Button editNote;
+
     FirebaseFirestore firestore;
     int position;
 NoteModel item;
@@ -42,14 +41,12 @@ NoteModel item;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_view);
         title=findViewById(R.id.note_view_title_text_view);
-        description=findViewById(R.id.note_view_description_text_view);
+        description=findViewById(R.id.note_view_title_text_view);
         time=  findViewById(R.id.note_view_time_text_view);
         date=findViewById(R.id.note_view_date_text_view);
         backToCalendar=findViewById(R.id.note_view_cancel_text_view);
         category=findViewById(R.id.note_view_category_list_text_view);
         delete=findViewById(R.id.note_view_delete_button);
-        editNote=findViewById(R.id.note_view_edit_button);
-
         ActionBar toolbar = getSupportActionBar();
         TypedValue typedValue = new TypedValue();
         getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
@@ -59,12 +56,6 @@ NoteModel item;
         firestore = CalendarFragment.getDb();
          position = getIntent().getIntExtra("data",0);
          item= CalendarFragment.getNote(position);
-         title.setText(item.getTittle());
-         description.setText(item.getDescription());
-         time.setText(item.getTime());
-         date.setText(item.getDate());
-         category.setText(item.getCategory());
-
     }
    public void cancel(View v){
         Intent intent = new Intent(NoteViewActivity.this, MainActivity.class);
@@ -72,7 +63,6 @@ NoteModel item;
     }
 
     public void deleteFromFirebase(View v){
-
         firestore.collection(MainActivity.getUser().getUser().getUid())
                 .whereEqualTo("time", item.getTime())
                 .get()
@@ -117,12 +107,9 @@ NoteModel item;
 
 
     }
-    public void editNote(View v){
-        Intent intent= new Intent(NoteViewActivity.this, EditNoteActivity.class);
-        intent.putExtra("data",position);
-        startActivity(intent);
 
-    }
+
+
 
 
 
