@@ -14,6 +14,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -77,14 +78,14 @@ public class NoteViewActivity extends AppCompatActivity {
         date.setText(item.getDate());
         category.setText(item.getCategory());
         friendsString=item.getFriend();
-        TextView file=findViewById(R.id.textView5);
+        TextView file=findViewById(R.id.note_view_category_list_file_view);
         file.setText(item.getFilename());
         //Log.d("size", String.valueOf(friendsList.size()));
             friends.setText(friendsString);
             file.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Toast.makeText(getApplicationContext(),"Файл Неможливо Відкрити",Toast.LENGTH_SHORT).show();
                 }
             });
 
