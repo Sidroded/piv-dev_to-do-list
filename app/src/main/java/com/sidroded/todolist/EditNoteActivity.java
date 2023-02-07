@@ -122,7 +122,7 @@ public class EditNoteActivity extends AppCompatActivity {
         title.setText(item.getTittle());
         description.setText(item.getDescription());
         date.setText(item.getDate());
-        time.setText(item.getDate());
+        time.setText(item.getTime());
 
         ActionBar toolbar = getSupportActionBar();
         TypedValue typedValue = new TypedValue();
