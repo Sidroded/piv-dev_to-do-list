@@ -86,7 +86,7 @@ public class CalendarFragment extends Fragment  {
                                 if(dataList.size() != task.getResult().size())
                                 {
                                     dataList.add(document.toObject(NoteModel.class));
-                                    Log.d("HUI", document.toObject(NoteModel.class).getTittle());
+                                    Log.d("HUI", document.toObject(NoteModel.class).getFriend()+" ");
                                     String title1 = document.toObject(NoteModel.class).getTittle().toString();
                                 }
                             }
@@ -94,6 +94,7 @@ public class CalendarFragment extends Fragment  {
                             for (NoteModel current : dataList) {
                                 if (current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) {
                                     filteredData.add(current);
+                                    Log.d("Tag",current.getFriend()+"");
                                      title2 = current.getTittle().toString();
                                 }
                             }
