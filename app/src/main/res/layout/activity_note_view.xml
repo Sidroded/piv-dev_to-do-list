@@ -131,6 +131,7 @@
                 android:textColor="@color/color_accent"
                 android:background="@drawable/rounded_corner"
                 android:id="@+id/note_view_edit_button"
+                android:onClick="editNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/note_view_category_list_file_view"
