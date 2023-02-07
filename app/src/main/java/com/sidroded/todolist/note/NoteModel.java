@@ -13,6 +13,8 @@ NoteModel {
     String friend;
     String category;
 
+    long millis;
+
     public String getFilename() {
         return filename;
     }
@@ -43,11 +45,14 @@ NoteModel {
         return category;
     }
 
+    public long getMillis() {
+        return millis;
+    }
 
     public NoteModel() {
     }
 
-    public NoteModel(String tittle, String description, String date, String time,String friend, String category,String filename) {
+    public NoteModel(String tittle, String description, String date, String time,String friend, String category,String filename, long millis) {
         this.tittle = tittle;
         this.description = description;
         this.date = date;
@@ -55,5 +60,6 @@ NoteModel {
         this.friend = friend;
         this.category = category;
         this.filename=filename;
+        this.millis = millis;
     }
 }
