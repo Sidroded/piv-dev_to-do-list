@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".EditNoteActivity">
 
     <RelativeLayout
@@ -216,38 +217,43 @@
                 android:textColor="@color/color_accent"
                 android:textSize="16sp" />
 
-            <Button
-
-                android:id="@+id/add_note_save_note_button"
-
-                style="?android:attr/borderlessButtonStyle"
+            <RelativeLayout
+                android:gravity="bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/add_note_add_file_button_id"
-                android:layout_marginTop="8dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/add_note_save_note_button"
+                    android:id="@+id/add_note_cancel_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   
+                    android:layout_marginTop="4dp"
+                    android:onClick="cancelEdit"
+                    android:text="@string/add_node_cancel_button_text"
+                    android:textSize="16dp" />
+
+                <Button
+
+                    android:id="@+id/add_note_save_note_button"
+
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
 
 
-                android:background="@drawable/rounded_corner"
-                android:fontFamily="@font/rubikregular"
-                android:letterSpacing="0"
-                android:onClick="addEdit"
-                android:text="@string/edit_note_save_button"
-                android:textAllCaps="false"
-                android:textColor="@color/color_accent"
-                android:textSize="16sp" />
+                    android:background="@drawable/rounded_corner"
+                    android:fontFamily="@font/rubikregular"
+                    android:letterSpacing="0"
+                    android:onClick="addEdit"
+                    android:text="@string/edit_note_save_button"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_accent"
+                    android:textSize="16sp" />
+            </RelativeLayout>
 
-
-            <TextView
-                android:id="@+id/add_note_cancel_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/add_note_save_note_button"
-                android:layout_centerHorizontal="true"
-
-                android:layout_marginTop="4dp"
-                android:onClick="cancelEdit"
-                android:text="@string/add_node_cancel_button_text"
-                android:textSize="16dp" />
 
         </RelativeLayout>
 
