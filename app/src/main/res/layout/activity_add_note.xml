@@ -200,6 +200,8 @@
                 android:textSize="16dp" />
 
             <Spinner
+                android:textColor="@color/color_accent"
+                android:fontFamily="@font/rubikregular"
                 android:background="@drawable/layout_corners_shape"
                 android:id="@+id/add_node_set_category_spinner_id"
                 android:layout_width="match_parent"
@@ -211,7 +213,7 @@
             <Button
                 android:id="@+id/add_note_add_file_button_id"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="168dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/add_node_set_category_spinner_id"
                 android:layout_marginBottom="14dp"

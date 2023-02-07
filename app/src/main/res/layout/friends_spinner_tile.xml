@@ -9,11 +9,14 @@
         android:paddingLeft="10dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/color_accent"
         android:layout_weight="1"
+        android:fontFamily="@font/rubikregular"
         android:text="Title" />
 
 
     <CheckBox
+
         android:id="@+id/checkBoxPressed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
