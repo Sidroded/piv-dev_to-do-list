@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +41,7 @@ public class FriendsFragment extends Fragment {
     static List<String> frindsListData = new ArrayList<>();
     ListView frindsList;
 
+    TextView infoNoFriends;
     public FriendsFragment() {
         // Required empty public constructor
     }
@@ -74,6 +76,7 @@ public class FriendsFragment extends Fragment {
         NavController navController = Navigation.findNavController(view);
 
         FloatingActionButton calendarFOB = view.findViewById(R.id.friendsFloatingActionButton);
+        infoNoFriends = view.findViewById(R.id.friend_text_view_id);
         calendarFOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +100,11 @@ public class FriendsFragment extends Fragment {
 
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
                             }
+
+                            if (frindsListData.isEmpty()) {
+                                infoNoFriends.setText("Наразі у вас немає доданих учасників :(");
+                            }
+
                             FriendsViewAdapter adapter = new FriendsViewAdapter(getActivity(), frindsListData);
                             frindsList.setAdapter(adapter);
 
