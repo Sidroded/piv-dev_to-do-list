@@ -24,28 +24,4 @@
         android:text="Calendar View Date Display"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <ListView
-                android:id="@+id/task_list_cells"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:divider="@color/background_color"
-                android:dividerHeight="10dp" />
-
-        </LinearLayout>
-    </ScrollView>
-
 </LinearLayout>
