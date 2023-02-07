@@ -85,7 +85,7 @@ public class NoteViewActivity extends AppCompatActivity {
             file.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),"Файл Неможливо Відкрити",Toast.LENGTH_SHORT).show();
+                    
                 }
             });
 
