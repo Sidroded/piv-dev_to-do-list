@@ -98,7 +98,7 @@ public class SettingsFragment extends Fragment {
             mAuth = FirebaseAuth.getInstance();
             mAuth.signOut();
 
-            Intent intent = new Intent(getContext(), MainActivity.class);
+            Intent intent = new Intent(getContext(), LoginLayout.class);
             startActivity(intent);
         });
 
