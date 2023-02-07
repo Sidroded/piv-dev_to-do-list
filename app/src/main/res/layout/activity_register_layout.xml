@@ -27,7 +27,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/registr_email_input_edit_layout"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:ems="10"
             app:boxCornerRadiusTopEnd="5dp"
@@ -54,7 +54,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/registr_password_input_text_layout"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/registr_email_input_edit_layout"
             android:ems="10"
             app:boxCornerRadiusTopEnd="5dp"

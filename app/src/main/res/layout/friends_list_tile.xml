@@ -22,7 +22,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="13dp"
 
-            android:fontFamily="@font/rubikbold"
+            android:fontFamily="@font/rubikregular"
             android:padding="2dp"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"

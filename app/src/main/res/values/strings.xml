@@ -24,12 +24,12 @@
     <string name="add_node_name_action_edit_text">Назва</string>
     <string name="add_node_description_text">Опис</string>
     <string name="add_node_description_edit_text">Опис</string>
-    <string name="add_node_date_text">Дата</string>
-    <string name="add_node_time_text">Час</string>
+    <string name="add_node_date_text">Оберіть дату</string>
+    <string name="add_node_time_text">Оберіть час</string>
     <string name="add_node_friend_text">Учасник</string>
     <string name="add_node_category_text">Категорія</string>
     <string name="add_node_add_file_button_text">+ Додати файл
-До 20 мб</string>
+(до 20 мб)</string>
     <string name="add_node_add_node_button_text">Додати подію</string>
     <string name="add_node_cancel_button_text">Скасувати</string>
     <string name="add_node_friend_action_edit_text">Оберіть учасника</string>

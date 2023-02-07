@@ -1,5 +1,6 @@
 package com.sidroded.todolist;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -11,8 +12,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -55,6 +58,7 @@ public class EditNoteActivity extends AppCompatActivity {
     Button addFileButton;
     Calendar dateAndTime = Calendar.getInstance();
     FirebaseStorage storage;
+    int titleColor;
     Spinner friendsSpinner;
     Button save;
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -119,6 +123,11 @@ public class EditNoteActivity extends AppCompatActivity {
         date.setText(item.getDate());
         time.setText(item.getDate());
 
+        ActionBar toolbar = getSupportActionBar();
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
+        titleColor = typedValue.data;
+        toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Редагування події</font></b>"));
 
         storageRef = storage.getReference();
 

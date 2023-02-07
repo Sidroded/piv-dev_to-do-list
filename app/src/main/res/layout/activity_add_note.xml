@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.ToDoList"
-    android:fillViewport="true">
+    android:fillViewport="true"
+   >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
             android:id="@+id/toolbar_add_note"/>-->
 
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".note.AddNoteFragment"
@@ -38,18 +40,19 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/add_note_set_title_input_layout"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_width="383dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/add_note_name_action_text_view_id"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/rubikregular"
                 android:hint="@string/add_node_name_action_edit_text"
-                android:theme="@style/MyTextInputLayout_overlay"
-                app:boxCornerRadiusTopEnd="5dp"
-                app:boxCornerRadiusTopStart="5dp"
-                app:boxBackgroundColor="@color/white"
+
                 android:textSize="13sp"
-                >
+                android:theme="@style/MyTextInputLayout_overlay"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_note_name_action_edit_text_view_id"
                     android:layout_width="match_parent"
@@ -197,6 +200,8 @@
                 android:textSize="16dp" />
 
             <Spinner
+                android:textColor="@color/color_accent"
+                android:fontFamily="@font/rubikregular"
                 android:background="@drawable/layout_corners_shape"
                 android:id="@+id/add_node_set_category_spinner_id"
                 android:layout_width="match_parent"
@@ -208,7 +213,7 @@
             <Button
                 android:id="@+id/add_note_add_file_button_id"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="168dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/add_node_set_category_spinner_id"
                 android:layout_marginBottom="14dp"
@@ -221,39 +226,42 @@
                 android:textColor="@color/color_accent"
                 android:textSize="16sp" />
 
-            <Button
-
-                android:id="@+id/add_note_save_note_button"
-
-                style="?android:attr/borderlessButtonStyle"
+            <RelativeLayout
+                android:gravity="bottom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/add_note_add_file_button_id"
-                android:layout_marginTop="8dp"
+                android:layout_height="match_parent">
+
+                <Button
+
+                    android:id="@+id/add_note_save_note_button"
+android:layout_marginBottom="10dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
 
 
-                android:background="@drawable/rounded_corner"
-                android:fontFamily="@font/rubikregular"
-                android:letterSpacing="0"
-                android:onClick="add"
-                android:text="@string/add_node_add_node_button_text"
-                android:textAllCaps="false"
-                android:textColor="@color/color_accent"
-                android:textSize="16sp" />
+                    android:background="@drawable/rounded_corner"
+                    android:fontFamily="@font/rubikregular"
+                    android:letterSpacing="0"
+                    android:onClick="add"
+                    android:text="@string/add_node_add_node_button_text"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_accent"
+                    android:textSize="16sp" />
 
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/add_note_cancel_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:onClick="cancel"
+                    android:layout_below="@+id/add_note_save_note_button"
+                    android:text="@string/add_node_cancel_button_text"
+                    android:textSize="16dp" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/add_note_cancel_text_view"
-                android:text="@string/add_node_cancel_button_text"
-                android:textSize="16dp"
-
-                android:onClick="cancel"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/add_note_save_note_button"
-                android:layout_marginTop="4dp"
-                />
 
         </RelativeLayout>
     </RelativeLayout>
