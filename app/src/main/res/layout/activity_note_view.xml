@@ -135,7 +135,7 @@
 
             <RelativeLayout
 
-                android:gravity="bottom"
+                android:layout_below="@+id/note_view_category_list_file_view"
                 android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -195,7 +195,8 @@ android:layout_below="@id/note_view_edit_button"
                 android:layout_below="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Файл не обрано" />
+                android:text="Файл не обрано"
+                android:layout_marginBottom="100dp"/>
 
 
         </RelativeLayout>

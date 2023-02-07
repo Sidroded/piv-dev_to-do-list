@@ -227,14 +227,14 @@
                 android:textSize="16sp" />
 
             <RelativeLayout
-                android:gravity="bottom"
+                android:layout_below="@+id/add_note_add_file_button_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <Button
 
                     android:id="@+id/add_note_save_note_button"
-android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="10dp"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
