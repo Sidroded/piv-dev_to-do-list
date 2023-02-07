@@ -154,7 +154,7 @@ public class AddNoteActivity extends AppCompatActivity {
         getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
         int titleColor = typedValue.data;
 
-        toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>Нова подія</font>"));
+        toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Нова подія</font></b>"));
 
     }
 
