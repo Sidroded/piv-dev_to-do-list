@@ -184,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/note_view_delete_button"
                 android:layout_centerHorizontal="true"
+                android:onClick="cancel"
                 android:text="@string/note_view_back_button_title_text" />
 
 
