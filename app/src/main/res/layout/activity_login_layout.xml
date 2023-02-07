@@ -29,13 +29,12 @@
         android:id="@+id/login_layout_email_input_edit_text"
 
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         app:boxCornerRadiusTopEnd="5dp"
         app:boxCornerRadiusTopStart="5dp"
         app:boxBackgroundColor="@color/white"
         android:theme="@style/MyTextInputLayout_overlay"
-
 
         android:fontFamily="@font/rubikregular"
         android:hint="@string/email_field_reg"

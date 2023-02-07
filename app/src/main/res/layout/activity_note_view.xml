@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="16dp"
+            android:background="@color/background_color"
             android:paddingTop="16dp"
             android:paddingRight="16dp"
             >
@@ -63,7 +64,7 @@
                 android:fontFamily="@font/rubikmedium"
                 android:text="@string/note_view_title_text"
                 android:textColor="@color/color_accent"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/note_view_description_text_view"
