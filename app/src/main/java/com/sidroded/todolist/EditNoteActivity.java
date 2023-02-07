@@ -17,6 +17,8 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -35,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sidroded.todolist.calendar.CalendarFragment;
+import com.sidroded.todolist.note.AddNoteActivity;
 import com.sidroded.todolist.note.NoteModel;
 
 import java.io.File;
@@ -44,6 +47,7 @@ import java.util.Calendar;
 public class EditNoteActivity extends AppCompatActivity {
     private static final int FILE_SELECT_CODE = 0;
     int position;
+    String[] categories = new String[]{"Інше", "Активність", "Відпочинок", "Зустріч"};
     Uri file;
     Uri uri;
     String path;
@@ -116,13 +120,32 @@ public class EditNoteActivity extends AppCompatActivity {
         description = findViewById(R.id.add_note_description_edit_text_view_id);
         time = findViewById(R.id.add_node_time_view_id);
         date = findViewById(R.id.add_node_date_view_id);
-        friendsSpinner = findViewById(R.id.add_node_set_category_spinner_id);
+        friendsSpinner = findViewById(R.id.add_node_set_friend_spinner_id);
         addFileButton = findViewById(R.id.add_note_add_file_button_id);
         storage = FirebaseStorage.getInstance();
         title.setText(item.getTittle());
         description.setText(item.getDescription());
         date.setText(item.getDate());
-        time.setText(item.getDate());
+        time.setText(item.getTime());
+
+        Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
+        ArrayAdapter<String> adapter = new ArrayAdapter(EditNoteActivity.this, android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = (String) parent.getItemAtPosition(position);
+                category = item;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+        spinner.setOnItemSelectedListener(itemSelectedListener);
 
         ActionBar toolbar = getSupportActionBar();
         TypedValue typedValue = new TypedValue();
