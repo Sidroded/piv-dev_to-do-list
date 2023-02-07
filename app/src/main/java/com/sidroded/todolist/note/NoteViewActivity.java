@@ -36,6 +36,7 @@ public class NoteViewActivity extends AppCompatActivity {
     int titleColor;
     Button editNote;
     FirebaseFirestore firestore;
+    TextView file;
     int position;
     NoteModel item;
     @Override
@@ -51,6 +52,7 @@ public class NoteViewActivity extends AppCompatActivity {
         category=findViewById(R.id.note_view_category_list_text_view);
         delete=findViewById(R.id.note_view_delete_button);
         editNote=findViewById(R.id.note_view_edit_button);
+        file=findViewById(R.id.note_view_category_list_file_view);
 
         ActionBar toolbar = getSupportActionBar();
 
@@ -70,6 +72,7 @@ public class NoteViewActivity extends AppCompatActivity {
         time.setText(item.getTime());
         date.setText(item.getDate());
         category.setText(item.getCategory());
+
 
     }
     public void cancel(View v){
@@ -124,5 +127,11 @@ public class NoteViewActivity extends AppCompatActivity {
         intent.putExtra("data",position);
         startActivity(intent);
 
+    }
+    public void fileOpen(View v){
+        Intent myIntent = new Intent(Intent.ACTION_VIEW);
+        myIntent.setData();
+        Intent j = Intent.createChooser(myIntent, "Choose an application to open with:");
+        startActivity(j);
     }
 }

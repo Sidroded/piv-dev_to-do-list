@@ -40,7 +40,10 @@ public class ListViewAdapter extends ArrayAdapter<NoteModel> implements Filterab
 
             TextView titleText = (TextView) listItem.findViewById(R.id.title);
             TextView subtitleText = (TextView) listItem.findViewById(R.id.subtitle);
-
+            TextView time=(TextView)listItem.findViewById(R.id.time);
+            TextView date=(TextView)listItem.findViewById(R.id.date);
+            time.setText(currentNote.getTime());
+            date.setText(currentNote.getDate());
             titleText.setText(currentNote.getTittle());
             subtitleText.setText(currentNote.getDescription());
 
