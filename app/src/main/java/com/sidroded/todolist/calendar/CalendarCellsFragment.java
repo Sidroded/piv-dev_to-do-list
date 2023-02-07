@@ -90,8 +90,6 @@ public class CalendarCellsFragment extends Fragment {
 
 
         calendarView = rootView.findViewById(R.id.calendarView);
-        dateDisplay = rootView.findViewById(R.id.date_display);
-        dateDisplay.setText("Date: ");
         date = dateFormat.format(new Date());
 
 

@@ -14,15 +14,8 @@
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:layout_marginBottom="16dp"
-    android:layout_marginTop="16dp" />
+    android:layout_marginTop="8dp" />
 
-    <TextView
-        android:id="@+id/date_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/rubikregular"
-        android:text="Calendar View Date Display"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +28,7 @@
             <ListView
                 android:id="@+id/task_list_cells"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="228dp"
 
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
