@@ -36,6 +36,7 @@ import com.sidroded.todolist.friends.FriendsFragment;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddNoteActivity extends AppCompatActivity {
     private static final int FILE_SELECT_CODE = 0;
@@ -166,7 +167,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 temp+=friendsSpinnerAdapter.getCheckedFriends().get(i)+",";
             }
         }
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), temp, category, filename);
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), temp, category, filename, new Date().getTime());
         db.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
         firebaseSave();
         Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);

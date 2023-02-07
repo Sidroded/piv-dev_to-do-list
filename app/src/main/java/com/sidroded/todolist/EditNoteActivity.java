@@ -43,6 +43,7 @@ import com.sidroded.todolist.note.NoteModel;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class EditNoteActivity extends AppCompatActivity {
     private static final int FILE_SELECT_CODE = 0;
@@ -64,6 +65,7 @@ public class EditNoteActivity extends AppCompatActivity {
     Calendar dateAndTime = Calendar.getInstance();
     FirebaseStorage storage;
     int titleColor;
+    long millis;
     Spinner friendsSpinner;
     Button save;
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -127,6 +129,7 @@ public class EditNoteActivity extends AppCompatActivity {
         description.setText(item.getDescription());
         date.setText(item.getDate());
         time.setText(item.getTime());
+        millis = item.getMillis();
 
         Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
         ArrayAdapter<String> adapter = new ArrayAdapter(EditNoteActivity.this, android.R.layout.simple_spinner_item, categories);
@@ -179,11 +182,11 @@ public class EditNoteActivity extends AppCompatActivity {
     }
 
     public void addEdit(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "",category, filename);
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "",category, filename,new Date().getTime());
         firestore.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
         firebaseSave();
         firestore.collection(MainActivity.getUser().getUser().getUid())
-                .whereEqualTo("time", item.getTime())
+                .whereEqualTo("millis", millis)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
