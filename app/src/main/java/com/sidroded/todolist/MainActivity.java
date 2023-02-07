@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
         TypedValue typedValue = new TypedValue();
         getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
         titleColor = typedValue.data;
-        
-        toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
+
+        toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Ваші справи</font></b>"));
 
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
@@ -68,17 +68,17 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
             switch (item.getItemId()) {
                 case R.id.calendar_item:
                     navCo.navigate(R.id.calendar);
-                    toolbar.setTitle(Html.fromHtml("<font face = 'arial-bold' color='" + titleColor + "'>Ваші справи</font>"));
+                    toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Ваші справи</font></b>"));
 
                     return true;
                 case R.id.friends_item:
                     navCo.navigate(R.id.friends);
-                    toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>Список учасників</font>"));
+                    toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Список учасників</font></b>"));
 
                     return true;
                 case R.id.settings_item:
                     navCo.navigate(R.id.settings);
-                    toolbar.setTitle(Html.fromHtml("<font face = 'rubik-bold' color='" + titleColor + "'>Налаштування</font>"));
+                    toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Налаштування</font></b>"));
 
                     return true;
 
