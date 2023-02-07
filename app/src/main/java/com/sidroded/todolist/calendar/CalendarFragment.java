@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,6 +34,7 @@ import java.util.List;
 
 public class CalendarFragment extends Fragment  {
    ListView task_list;
+   TextView info_notes;
     static FirebaseFirestore db;
     List<NoteModel> filteredData;
     String title1 = "";
@@ -66,7 +68,8 @@ public class CalendarFragment extends Fragment  {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
-        task_list= rootView.findViewById(R.id.task_list);
+        task_list = rootView.findViewById(R.id.task_list);
+        info_notes = rootView.findViewById(R.id.calendar_info_missing_notes);
          db = FirebaseFirestore.getInstance();
 
          filteredData = new ArrayList<>();
@@ -93,6 +96,12 @@ public class CalendarFragment extends Fragment  {
                                     filteredData.add(current);
                                      title2 = current.getTittle().toString();
                                 }
+                            }
+
+                            if (filteredData.isEmpty() && MainActivity.filter.equals("Всі")) {
+                                info_notes.setText("Наразі у вас немає активних задач :(");
+                            } else if (filteredData.isEmpty()) {
+                                info_notes.setText("Наразі у вас немає активних задач у категорії: " + MainActivity.filter.toLowerCase() + " :(");
                             }
 
                             ListViewAdapter adapter = new  ListViewAdapter(getActivity(), filteredData, MainActivity.getFilter());
