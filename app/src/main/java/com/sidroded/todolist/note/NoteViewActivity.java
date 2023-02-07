@@ -8,9 +8,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.sidroded.todolist.EditNoteActivity;
 import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.calendar.CalendarFragment;
@@ -33,36 +32,43 @@ public class NoteViewActivity extends AppCompatActivity {
     TextView category;
     Button delete;
 
+    Button editNote;
     FirebaseFirestore firestore;
     int position;
-NoteModel item;
+    NoteModel item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_view);
         title=findViewById(R.id.note_view_title_text_view);
         description=findViewById(R.id.note_view_title_text_view);
+        description=findViewById(R.id.note_view_description_text_view);
         time=  findViewById(R.id.note_view_time_text_view);
         date=findViewById(R.id.note_view_date_text_view);
         backToCalendar=findViewById(R.id.note_view_cancel_text_view);
         category=findViewById(R.id.note_view_category_list_text_view);
         delete=findViewById(R.id.note_view_delete_button);
-        ActionBar toolbar = getSupportActionBar();
-        TypedValue typedValue = new TypedValue();
-        getTheme().resolveAttribute(androidx.appcompat.R.attr.colorAccent, typedValue, true);
-        int titleColor = typedValue.data;
-        toolbar.setTitle(Html.fromHtml("<b><font face = '' color='" + titleColor + "'>Перегляд події</font></b>"));
+        editNote=findViewById(R.id.note_view_edit_button);
 
+        ActionBar toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.note_view_toolbar_title_text);
         firestore = CalendarFragment.getDb();
-         position = getIntent().getIntExtra("data",0);
-         item= CalendarFragment.getNote(position);
+        position = getIntent().getIntExtra("data",0);
+        item= CalendarFragment.getNote(position);
+        title.setText(item.getTittle());
+        description.setText(item.getDescription());
+        time.setText(item.getTime());
+        date.setText(item.getDate());
+        category.setText(item.getCategory());
+
     }
-   public void cancel(View v){
+    public void cancel(View v){
         Intent intent = new Intent(NoteViewActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
     public void deleteFromFirebase(View v){
+
         firestore.collection(MainActivity.getUser().getUser().getUid())
                 .whereEqualTo("time", item.getTime())
                 .get()
@@ -83,8 +89,8 @@ NoteModel item;
                                             Log.d("Firestore", "Document deleted successfully");
                                             CalendarFragment.updateDataList(position);
                                             Log.d("kek","deleted");
-                                           Intent intent= new Intent(NoteViewActivity.this,MainActivity.class);
-                                           startActivity(intent);
+                                            Intent intent= new Intent(NoteViewActivity.this,MainActivity.class);
+                                            startActivity(intent);
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -102,19 +108,11 @@ NoteModel item;
                         Log.e("Firestore", "Error retrieving document", e);
                     }
                 });
-
-
-
+    }
+    public void editNote(View v){
+        Intent intent= new Intent(NoteViewActivity.this, EditNoteActivity.class);
+        intent.putExtra("data",position);
+        startActivity(intent);
 
     }
-
-
-
-
-
-
-
-
-
-
 }
