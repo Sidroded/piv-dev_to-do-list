@@ -88,8 +88,8 @@
                     android:id="@+id/add_note_description_edit_text_view_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/rubikregular"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"
+                    android:fontFamily="@font/rubikregular" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
