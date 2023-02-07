@@ -69,6 +69,7 @@ public class EditNoteActivity extends AppCompatActivity {
     FriendsSpinnerAdapter friendsSpinnerAdapter;
     int titleColor;
     long millis;
+
     Spinner friendsSpinner;
     Button save;
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -140,6 +141,7 @@ public class EditNoteActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter(EditNoteActivity.this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        addFileButton = findViewById(R.id.add_note_add_file_button_id);
 
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
             @Override
@@ -173,6 +175,7 @@ public class EditNoteActivity extends AppCompatActivity {
                 dateAndTime.get(Calendar.DAY_OF_MONTH))
                 .show();
     }
+
 
     public void setTimeEdit(View v) {
 
