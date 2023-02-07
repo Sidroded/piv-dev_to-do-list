@@ -140,7 +140,6 @@ public class CalendarCellsFragment extends Fragment {
                         monthStr = "0" + monthStr;
                     }
                     date = day + "." + monthStr + "." + i;
-                    dateDisplay.setText("Date: " + date);
                     task_list = rootView.findViewById(R.id.task_list_cells);
                     db = FirebaseFirestore.getInstance();
 
