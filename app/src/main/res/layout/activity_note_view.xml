@@ -131,6 +131,7 @@
                 android:textColor="@color/color_accent"
                 android:background="@drawable/rounded_corner"
                 android:id="@+id/note_view_edit_button"
+                android:onClick="editNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/note_view_category_list_file_view"
@@ -167,6 +168,7 @@
                 android:textColor="@color/color_accent"
                 android:fontFamily="@font/rubikregular"
                 android:letterSpacing="0"
+                android:onClick="deleteFromFirebase"
 
                 android:background="@drawable/rounded_corner"
                 android:id="@+id/note_view_delete_button"
@@ -182,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/note_view_delete_button"
                 android:layout_centerHorizontal="true"
+                android:onClick="cancel"
                 android:text="@string/note_view_back_button_title_text" />
 
 
