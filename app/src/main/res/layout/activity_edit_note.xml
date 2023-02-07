@@ -211,7 +211,7 @@
                 android:background="@drawable/rounded_corner"
                 android:fontFamily="@font/rubikregular"
                 android:letterSpacing="0"
-                android:onClick="setFileEdit"
+                android:onClick="addFile"
                 android:text="@string/add_node_add_file_button_text"
                 android:textAllCaps="false"
                 android:textColor="@color/color_accent"
@@ -228,7 +228,7 @@
                     android:id="@+id/add_note_cancel_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   
+
                     android:layout_marginTop="4dp"
                     android:onClick="cancelEdit"
                     android:text="@string/add_node_cancel_button_text"

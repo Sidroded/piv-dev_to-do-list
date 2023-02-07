@@ -77,8 +77,16 @@ public class NoteViewActivity extends AppCompatActivity {
         date.setText(item.getDate());
         category.setText(item.getCategory());
         friendsString=item.getFriend();
+        TextView file=findViewById(R.id.textView5);
+        file.setText(item.getFilename());
         //Log.d("size", String.valueOf(friendsList.size()));
             friends.setText(friendsString);
+            file.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
 
 
 
