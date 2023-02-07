@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements AddFriendDialog.A
     SettingsFragment settingFragment = new SettingsFragment();
     FriendsFragment friendsFragment = new FriendsFragment();
     ActionBar toolbar;
-    NavController navCo;
+    public static NavController navCo;
     int titleColor;
 
 
