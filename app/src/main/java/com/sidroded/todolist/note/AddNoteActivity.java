@@ -57,8 +57,9 @@ public class AddNoteActivity extends AppCompatActivity {
     Button addFileButton;
     Uri file;
     FriendsSpinnerAdapter friendsSpinnerAdapter;
-    Uri uri;
     Spinner friendsSpinner;
+    Uri uri;
+
     Calendar dateAndTime = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
