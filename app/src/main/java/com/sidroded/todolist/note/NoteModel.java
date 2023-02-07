@@ -1,5 +1,6 @@
 package com.sidroded.todolist.note;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,7 +10,7 @@ NoteModel {
     String description;
     String date;
     String time;
-    List<String> friend;
+    String friend;
     String category;
 
     public String getFilename() {
@@ -34,7 +35,7 @@ NoteModel {
         return time;
     }
 
-    public List<String> getFriend() {
+    public String getFriend() {
         return friend;
     }
 
@@ -46,12 +47,12 @@ NoteModel {
     public NoteModel() {
     }
 
-    public NoteModel(String tittle, String description, String date, String time, String friend, String category,String filename) {
+    public NoteModel(String tittle, String description, String date, String time,String friend, String category,String filename) {
         this.tittle = tittle;
         this.description = description;
         this.date = date;
         this.time = time;
-        this.friend = Collections.singletonList(friend);
+        this.friend = friend;
         this.category = category;
         this.filename=filename;
     }

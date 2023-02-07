@@ -25,6 +25,9 @@ import com.sidroded.todolist.MainActivity;
 import com.sidroded.todolist.R;
 import com.sidroded.todolist.calendar.CalendarFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NoteViewActivity extends AppCompatActivity {
     TextView title;
     TextView description;
@@ -36,7 +39,9 @@ public class NoteViewActivity extends AppCompatActivity {
     int titleColor;
     Button editNote;
     FirebaseFirestore firestore;
+    String friendsString;
     int position;
+    TextView friends;
     NoteModel item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,7 @@ public class NoteViewActivity extends AppCompatActivity {
         category=findViewById(R.id.note_view_category_list_text_view);
         delete=findViewById(R.id.note_view_delete_button);
         editNote=findViewById(R.id.note_view_edit_button);
+        friends=findViewById(R.id.note_view_friends_list_text_view);
 
         ActionBar toolbar = getSupportActionBar();
 
@@ -70,6 +76,11 @@ public class NoteViewActivity extends AppCompatActivity {
         time.setText(item.getTime());
         date.setText(item.getDate());
         category.setText(item.getCategory());
+        friendsString=item.getFriend();
+        //Log.d("size", String.valueOf(friendsList.size()));
+            friends.setText(friendsString);
+
+
 
     }
     public void cancel(View v){

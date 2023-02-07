@@ -24,6 +24,10 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
     HashMap<Integer, Boolean> checked = new HashMap<>();
     int mResource;
 
+    public List<String> getCheckedFriends() {
+        return checkedFriends;
+    }
+
     public FriendsSpinnerAdapter(Context context, int resource, List<String> friends) {
         super(context, resource, friends);
         mContext = context;

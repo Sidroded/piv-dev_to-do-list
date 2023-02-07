@@ -35,7 +35,6 @@ import com.sidroded.todolist.R;
 import com.sidroded.todolist.friends.FriendsFragment;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddNoteActivity extends AppCompatActivity {
@@ -56,6 +55,7 @@ public class AddNoteActivity extends AppCompatActivity {
     String filename = "";
     Button addFileButton;
     Uri file;
+    FriendsSpinnerAdapter friendsSpinnerAdapter;
     Uri uri;
     Spinner friendsSpinner;
     Calendar dateAndTime = Calendar.getInstance();
@@ -125,7 +125,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR));
 
         friendsSpinner = findViewById(R.id.add_node_set_friend_spinner_id);
-        FriendsSpinnerAdapter friendsSpinnerAdapter = new FriendsSpinnerAdapter(this, R.layout.friends_spinner_tile, FriendsFragment.getFrindsListData());
+        friendsSpinnerAdapter = new FriendsSpinnerAdapter(this, R.layout.friends_spinner_tile, FriendsFragment.getFrindsListData());
         Spinner spinner = findViewById(R.id.add_node_set_category_spinner_id);
         ArrayAdapter<String> adapter = new ArrayAdapter(AddNoteActivity.this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -159,7 +159,14 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void add(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "Hui", category, filename);
+        String temp="";
+        if(friendsSpinnerAdapter.getCheckedFriends().size()!=0)
+        {
+            for(int i=0;i<friendsSpinnerAdapter.getCheckedFriends().size();i++){
+                temp+=friendsSpinnerAdapter.getCheckedFriends().get(i)+",";
+            }
+        }
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), temp, category, filename);
         db.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
         firebaseSave();
         Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);

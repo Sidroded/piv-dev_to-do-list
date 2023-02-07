@@ -38,6 +38,7 @@ import com.sidroded.todolist.calendar.CalendarFragment;
 import com.sidroded.todolist.note.NoteModel;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class EditNoteActivity extends AppCompatActivity {
@@ -155,7 +156,7 @@ public class EditNoteActivity extends AppCompatActivity {
     }
 
     public void addEdit(View v) {
-        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "Hui", category, filename);
+        NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), "",category, filename);
         firestore.collection(MainActivity.getUser().getUser().getUid()).add(addingElement);
         firebaseSave();
         firestore.collection(MainActivity.getUser().getUser().getUid())
