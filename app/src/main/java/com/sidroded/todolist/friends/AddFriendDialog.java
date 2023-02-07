@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -65,8 +68,8 @@ public class AddFriendDialog extends AppCompatDialogFragment {
                         Lol ab= new Lol(newFriend.toString());
 
                         db.collection("friends"+MainActivity.getUser().getUser().getUid().toString()).add(ab);
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        startActivity(intent);
+
+                        MainActivity.navCo.navigate(R.id.friends);
                        //listener.applyText(newFriend);
                        //FriendsFragment.addFriend(newFriend);
 
