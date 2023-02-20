@@ -3,9 +3,9 @@ package com.sidroded.todolist.user;
 import com.google.firebase.auth.FirebaseUser;
 
 public class User implements IUser {
-    String email;
-    String password;
-    FirebaseUser user;
+    private final String email;
+    private final String password;
+    private final FirebaseUser user;
 
     public User(String email, String password, FirebaseUser user) {
         this.email = email;

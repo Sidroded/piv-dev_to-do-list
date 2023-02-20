@@ -56,7 +56,7 @@ public class LoginLayout extends AppCompatActivity {
 
         toolbar.hide();
 
-        text_register.setOnClickListener(new View.OnClickListener(){
+        text_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginLayout.this, RegisterLayout.class);

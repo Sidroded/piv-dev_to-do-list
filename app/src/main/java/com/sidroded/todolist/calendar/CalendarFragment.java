@@ -32,9 +32,9 @@ import com.sidroded.todolist.note.NoteViewActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarFragment extends Fragment  {
-   ListView task_list;
-   TextView info_notes;
+public class CalendarFragment extends Fragment {
+    ListView task_list;
+    TextView info_notes;
     static FirebaseFirestore db;
     List<NoteModel> filteredData;
     String title1 = "";
@@ -44,7 +44,7 @@ public class CalendarFragment extends Fragment  {
         return db;
     }
 
-    static List<NoteModel> dataList=new ArrayList<>();
+    static List<NoteModel> dataList = new ArrayList<>();
 
     public static void updateDataList(int i) {
         dataList.remove(i);
@@ -63,6 +63,7 @@ public class CalendarFragment extends Fragment  {
         super.onCreate(savedInstanceState);
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,23 +71,22 @@ public class CalendarFragment extends Fragment  {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         task_list = rootView.findViewById(R.id.task_list);
         info_notes = rootView.findViewById(R.id.calendar_info_missing_notes);
-         db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
 
-         filteredData = new ArrayList<>();
+        filteredData = new ArrayList<>();
 
-         dataList.clear();
+        dataList.clear();
 
-        if(MainActivity.getUser()!=null){
+        if (MainActivity.getUser() != null) {
             db.collection(MainActivity.getUser().getUser().getUid())
                     .get()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 //Log.d(TAG, document.getId() + " => " + document.getData());
-                                if(dataList.size() != task.getResult().size())
-                                {
+                                if (dataList.size() != task.getResult().size()) {
                                     dataList.add(document.toObject(NoteModel.class));
-                                    Log.d("HUI", document.toObject(NoteModel.class).getFriend()+" ");
+                                    Log.d("HUI", document.toObject(NoteModel.class).getFriend() + " ");
                                     String title1 = document.toObject(NoteModel.class).getTittle().toString();
                                 }
                             }
@@ -94,8 +94,8 @@ public class CalendarFragment extends Fragment  {
                             for (NoteModel current : dataList) {
                                 if (current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) {
                                     filteredData.add(current);
-                                    Log.d("Tag",current.getFriend()+"");
-                                     title2 = current.getTittle().toString();
+                                    Log.d("Tag", current.getFriend() + "");
+                                    title2 = current.getTittle().toString();
                                 }
                             }
 
@@ -105,7 +105,7 @@ public class CalendarFragment extends Fragment  {
                                 info_notes.setText("Наразі у вас немає активних задач у категорії: " + MainActivity.filter.toLowerCase() + " :(");
                             }
 
-                            ListViewAdapter adapter = new  ListViewAdapter(getActivity(), filteredData, MainActivity.getFilter());
+                            ListViewAdapter adapter = new ListViewAdapter(getActivity(), filteredData, MainActivity.getFilter());
                             task_list.setAdapter(adapter);
                         } else {
                             //Log.d(TAG, "Error getting documents: ", task.getException());
@@ -117,7 +117,7 @@ public class CalendarFragment extends Fragment  {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getContext(), NoteViewActivity.class);
-                intent.putExtra("data",i);
+                intent.putExtra("data", i);
                 startActivity(intent);
             }
         });

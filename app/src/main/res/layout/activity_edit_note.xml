@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".EditNoteActivity">
+    tools:context=".note.EditNoteActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:paddingTop="24dp"
             android:paddingRight="16dp"
             android:paddingBottom="16dp"
-            tools:context=".EditNoteActivity">
+            tools:context=".note.EditNoteActivity">
 
             <TextView
                 android:id="@+id/add_note_name_action_text_view_id"

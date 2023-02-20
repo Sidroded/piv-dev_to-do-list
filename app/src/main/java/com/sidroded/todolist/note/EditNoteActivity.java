@@ -1,4 +1,4 @@
-package com.sidroded.todolist;
+package com.sidroded.todolist.note;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,14 +35,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.sidroded.todolist.MainActivity;
+import com.sidroded.todolist.R;
 import com.sidroded.todolist.calendar.CalendarFragment;
 import com.sidroded.todolist.friends.FriendsFragment;
-import com.sidroded.todolist.note.AddNoteActivity;
-import com.sidroded.todolist.note.FriendsSpinnerAdapter;
-import com.sidroded.todolist.note.NoteModel;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 

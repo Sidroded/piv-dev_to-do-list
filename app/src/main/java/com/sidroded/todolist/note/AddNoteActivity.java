@@ -161,11 +161,10 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void add(View v) {
-        String temp="";
-        if(friendsSpinnerAdapter.getCheckedFriends().size()!=0)
-        {
-            for(int i=0;i<friendsSpinnerAdapter.getCheckedFriends().size();i++){
-                temp+=friendsSpinnerAdapter.getCheckedFriends().get(i)+",";
+        String temp = "";
+        if (friendsSpinnerAdapter.getCheckedFriends().size() != 0) {
+            for (int i = 0; i < friendsSpinnerAdapter.getCheckedFriends().size(); i++) {
+                temp += friendsSpinnerAdapter.getCheckedFriends().get(i) + ",";
             }
         }
         NoteModel addingElement = new NoteModel(title.getText().toString(), description.getText().toString(), date.getText().toString(), time.getText().toString(), temp, category, filename, new Date().getTime());

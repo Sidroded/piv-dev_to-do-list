@@ -51,7 +51,7 @@ public class CalendarCellsFragment extends Fragment {
         return db;
     }
 
-    static List<NoteModel> dataList=new ArrayList<>();
+    static List<NoteModel> dataList = new ArrayList<>();
 
     private String mParam1;
     private String mParam2;
@@ -111,19 +111,19 @@ public class CalendarCellsFragment extends Fragment {
                                 if (dataList.size() != task.getResult().size()) {
                                     dataList.add(document.toObject(NoteModel.class));
                                     Log.d("HUI", document.toObject(NoteModel.class).getTittle());
-                                    }
                                 }
+                            }
 
-                                for (NoteModel current : dataList) {
-                                    if ((current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) && current.getDate().equals(date)) {
-                                        filteredData.add(current);
-                                    }
+                            for (NoteModel current : dataList) {
+                                if ((current.getCategory().equals(MainActivity.getFilter()) || MainActivity.getFilter().equals("Всі")) && current.getDate().equals(date)) {
+                                    filteredData.add(current);
                                 }
+                            }
 
-                                ListViewAdapter adapter = new ListViewAdapter(getActivity(), filteredData, MainActivity.getFilter());
-                                task_list.setAdapter(adapter);
+                            ListViewAdapter adapter = new ListViewAdapter(getActivity(), filteredData, MainActivity.getFilter());
+                            task_list.setAdapter(adapter);
                         } else {
-                                //Log.d(TAG, "Error getting documents: ", task.getException());
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     });
 
@@ -188,6 +188,8 @@ public class CalendarCellsFragment extends Fragment {
 
         return rootView;
     }
+
+
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {

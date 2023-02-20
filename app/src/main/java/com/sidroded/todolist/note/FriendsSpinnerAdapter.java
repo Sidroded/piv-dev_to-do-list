@@ -75,6 +75,5 @@ public class FriendsSpinnerAdapter extends ArrayAdapter<String> {
         });
 
         return view;
-
     }
 }

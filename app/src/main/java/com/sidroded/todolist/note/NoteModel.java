@@ -6,14 +6,13 @@ import java.util.List;
 
 public class
 NoteModel {
-    String tittle;
-    String description;
-    String date;
-    String time;
-    String friend;
-    String category;
-
-    long millis;
+    private String tittle;
+    private String description;
+    private String date;
+    private String time;
+    private String friend;
+    private String category;
+    private long millis;
 
     public String getFilename() {
         return filename;
